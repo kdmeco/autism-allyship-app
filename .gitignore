@@ -1,0 +1,30 @@
+# Gradle and build output
+.gradle/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+local.properties
+
+# Android Studio and IntelliJ
+*.iml
+.idea/
+.navigation/
+*.ipr
+*.iws
+misc.xml
+
+# Signing. Never commit a keystore. Losing control of it means somebody else can
+# publish updates to the app.
+*.jks
+*.keystore
+keystore.properties
+
+# Credentials
+.env
+*-service-account*.json
+
+# Operating system
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "615500105354",
+    "project_id": "autism-allyship",
+    "storage_bucket": "autism-allyship.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615500105354:android:96ab5bf9172e98e5b4cf73",
+        "android_client_info": {
+          "package_name": "org.autismallyship.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1e_EmCFncuT456vLfUbZo9z_omFE4iBc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
