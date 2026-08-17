@@ -1,15 +1,7 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
     <style name="Base.Theme.AutismAllyship" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/accent</item>
-        <item name="colorOnPrimary">@color/on_accent</item>
-        <item name="android:colorBackground">@color/page</item>
-        <item name="colorSurface">@color/surface</item>
-        <item name="colorOnSurface">@color/text</item>
-        <item name="colorOnSurfaceVariant">@color/text_muted</item>
-        <item name="colorOutline">@color/line</item>
-        <item name="colorSecondaryContainer">@color/surface_alt</item>
-        <item name="colorOnSecondaryContainer">@color/accent_text</item>
-        <item name="android:fontFamily">@font/poppins</item>
-        <item name="fontFamily">@font/poppins</item>
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
 </resources>
