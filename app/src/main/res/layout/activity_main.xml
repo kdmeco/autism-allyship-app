@@ -17,7 +17,9 @@
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        app:labelVisibilityMode="labeled"
+        android:minHeight="64dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/bottom_nav" />
 </LinearLayout>
