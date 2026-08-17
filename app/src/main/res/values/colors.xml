@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="page">#FBFAFA</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_alt">#F0EDEE</color>
+    <color name="text">#1C181A</color>
+    <color name="text_muted">#575053</color>
+    <color name="line">#DAD4D6</color>
+    <color name="line_strong">#7E7478</color>
+    <color name="accent">#D41B5C</color>
+    <color name="accent_hover">#B8154F</color>
+    <color name="accent_soft">#A34063</color>
+    <color name="on_accent">#FFFFFF</color>
+    <color name="accent_text">#B8154F</color>
+    <color name="accent_text_soft">#8F3552</color>
 </resources>

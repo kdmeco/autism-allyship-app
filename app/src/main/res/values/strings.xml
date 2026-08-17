@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">Autism Allyship</string>
+
+    <string name="tab_home">Home</string>
+    <string name="tab_events">Events</string>
+    <string name="tab_sensory">Sensory</string>
+    <string name="tab_resources">Resources</string>
+    <string name="tab_more">More</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_events">Events</string>
+    <string name="title_sensory">Sensory tools</string>
+    <string name="title_resources">Resources</string>
+    <string name="title_more">More</string>
+
+    <string name="coming_soon">Content coming soon</string>
+
+    <string name="more_blog">Blog</string>
+    <string name="more_gallery">Gallery</string>
+    <string name="more_shop">Shop</string>
+    <string name="more_donate">Donate</string>
+    <string name="more_about">About</string>
+    <string name="more_contact">Contact</string>
+    <string name="more_settings">Settings</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_dark_mode">Dark mode</string>
+    <string name="settings_dark_mode_summary">On means always dark. Off means always light. The default follows your phone setting.</string>
+    <string name="settings_sensory_mode">Sensory mode</string>
+    <string name="settings_sensory_mode_summary">Calmer colours, no animation and no vibration anywhere in the app.</string>
+    <string name="settings_haptics">Vibration</string>
+    <string name="settings_haptics_summary">Light vibration for feedback in the sensory tools. Switched off by sensory mode.</string>
+
+    <string name="cd_back">Back</string>
 </resources>
