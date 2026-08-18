@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/detail_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:navigationContentDescription="@string/cd_back"
+        app:navigationIcon="?attr/homeAsUpIndicator" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ScrollView
+            android:id="@+id/detail_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/resource_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="22sp"
+                    android:lineSpacingMultiplier="1.4" />
+
+                <TextView
+                    android:id="@+id/resource_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="15sp"
+                    android:lineSpacingMultiplier="1.4" />
+
+                <TextView
+                    android:id="@+id/resource_provinces"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="15sp"
+                    android:lineSpacingMultiplier="1.4" />
+
+                <TextView
+                    android:id="@+id/resource_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="17sp"
+                    android:lineSpacingMultiplier="1.4" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/call_button"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="start|center_vertical"
+                    android:minHeight="48dp"
+                    android:textSize="17sp"
+                    android:visibility="gone" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/email_button"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="start|center_vertical"
+                    android:minHeight="48dp"
+                    android:textSize="17sp"
+                    android:visibility="gone" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/website_button"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="start|center_vertical"
+                    android:minHeight="48dp"
+                    android:text="@string/resource_website"
+                    android:textSize="17sp"
+                    android:visibility="gone" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/map_button"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="start|center_vertical"
+                    android:minHeight="48dp"
+                    android:text="@string/resource_map"
+                    android:textSize="17sp"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="24dp"
+                    android:background="?attr/colorOutline" />
+
+                <TextView
+                    android:id="@+id/resource_disclaimer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/resource_disclaimer"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="15sp"
+                    android:lineSpacingMultiplier="1.4" />
+            </LinearLayout>
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/loading_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/resources_loading"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/detail_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="24dp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="17sp"
+            android:lineSpacingMultiplier="1.4"
+            android:visibility="gone" />
+    </FrameLayout>
+</LinearLayout>
