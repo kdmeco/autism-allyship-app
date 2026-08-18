@@ -39,6 +39,7 @@
     <string name="resources_filter_category">Category</string>
     <string name="resources_filter_province">Province</string>
     <string name="filter_all">All</string>
+    <string name="offline_banner">You are offline. This list was saved earlier and may be out of date.</string>
 
     <string name="resource_call">Call %1$s</string>
     <string name="resource_email">Email %1$s</string>

@@ -56,14 +56,22 @@ class ResourcesFragment : Fragment() {
     private fun loadResources() {
         showLoading()
         Repository.loadResources(
-            onSuccess = { resources ->
-                allResources = resources
-                loaded = true
-                fillFilterOptions()
-                applyFilters()
-            },
+            onSuccess = { resources, fromCache -> showLoaded(resources, fromCache) },
             onError = { showMessage(R.string.resources_load_failed) }
         )
+    }
+
+    private fun showLoaded(resources: List<Resource>, fromCache: Boolean) {
+        val binding = this.binding ?: return
+        allResources = resources
+        loaded = true
+
+        // Firestore tells us whether the answer came off the disk rather than the server, so the
+        // banner appears exactly when what is on screen might be out of date.
+        binding.offlineBanner.isVisible = fromCache
+
+        fillFilterOptions()
+        applyFilters()
     }
 
     // Both filter lists come from what actually arrived, so neither offers a category or a province
@@ -134,6 +142,7 @@ class ResourcesFragment : Fragment() {
         // Sensory mode allows no animation anywhere in the app, and a spinner is an animation, so it
         // is replaced with a line of text rather than slowed down.
         val sensoryMode = AppSettings(requireContext()).isSensoryMode()
+        binding.offlineBanner.isVisible = false
         binding.loadingSpinner.isVisible = !sensoryMode
         binding.listMessage.setText(R.string.resources_loading)
         binding.listMessage.isVisible = sensoryMode

@@ -83,12 +83,22 @@ object Repository {
     // Search, category and province all filter this one list in code. SCHEMA.md settled that,
     // because provinces is an array and filtering on membership in the client keeps the query shape
     // free of it. Sorting by name here rather than in the query avoids a composite index.
-    fun loadResources(onSuccess: (List<Resource>) -> Unit, onError: (Exception) -> Unit) {
+    //
+    // fromCache is Firestore's own word for "this answer came off the disk, not the server", which
+    // is what the offline banner needs. Reading it here rather than checking the connection saves a
+    // permission and is more honest, since a live connection can still serve a stale read.
+    fun loadResources(
+        onSuccess: (resources: List<Resource>, fromCache: Boolean) -> Unit,
+        onError: (Exception) -> Unit
+    ) {
         db.collection(RESOURCES)
             .whereEqualTo("published", true)
             .get()
             .addOnSuccessListener { snapshot ->
-                onSuccess(snapshot.toObjects(Resource::class.java).sortedBy { it.name })
+                onSuccess(
+                    snapshot.toObjects(Resource::class.java).sortedBy { it.name },
+                    snapshot.metadata.isFromCache
+                )
             }
             .addOnFailureListener { error -> onError(error) }
     }
