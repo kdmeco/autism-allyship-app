@@ -33,7 +33,12 @@
 
     <string name="resources_loading">Loading resources</string>
     <string name="resources_empty">No resources to show yet</string>
+    <string name="resources_no_matches">No resources match your search</string>
     <string name="resources_load_failed">Resources could not be loaded. Check your connection and try again.</string>
+    <string name="resources_search_hint">Search resources</string>
+    <string name="resources_filter_category">Category</string>
+    <string name="resources_filter_province">Province</string>
+    <string name="filter_all">All</string>
 
     <string name="cd_back">Back</string>
 </resources>
