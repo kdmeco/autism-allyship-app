@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import org.autismallyship.app.data.Resource
 import org.autismallyship.app.databinding.ItemResourceBinding
 
-class ResourceAdapter : RecyclerView.Adapter<ResourceAdapter.ResourceViewHolder>() {
+class ResourceAdapter(
+    private val onResourceClick: (Resource) -> Unit
+) : RecyclerView.Adapter<ResourceAdapter.ResourceViewHolder>() {
 
     private val resources = mutableListOf<Resource>()
 
@@ -27,7 +29,7 @@ class ResourceAdapter : RecyclerView.Adapter<ResourceAdapter.ResourceViewHolder>
     }
 
     override fun onBindViewHolder(holder: ResourceViewHolder, position: Int) {
-        holder.bind(resources[position])
+        holder.bind(resources[position], onResourceClick)
     }
 
     override fun getItemCount(): Int = resources.size
@@ -36,7 +38,7 @@ class ResourceAdapter : RecyclerView.Adapter<ResourceAdapter.ResourceViewHolder>
         private val binding: ItemResourceBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(resource: Resource) {
+        fun bind(resource: Resource, onResourceClick: (Resource) -> Unit) {
             binding.resourceName.text = resource.name
 
             // Category and description are both optional in practice, so an empty one is taken out
@@ -46,6 +48,17 @@ class ResourceAdapter : RecyclerView.Adapter<ResourceAdapter.ResourceViewHolder>
 
             binding.resourceDescription.text = resource.description
             binding.resourceDescription.isVisible = resource.description.isNotBlank()
+
+            binding.root.setOnClickListener { onResourceClick(resource) }
+
+            // TalkBack treats a tappable row as one item, so the row carries its own description
+            // rather than leaving the reader to stitch three separate text views together.
+            val context = binding.root.context
+            binding.root.contentDescription = if (resource.category.isBlank()) {
+                resource.name
+            } else {
+                context.getString(R.string.cd_resource_row, resource.name, resource.category)
+            }
         }
     }
 }

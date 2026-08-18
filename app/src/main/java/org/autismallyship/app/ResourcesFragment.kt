@@ -19,7 +19,9 @@ class ResourcesFragment : Fragment() {
     // Held as a nullable and cleared in onDestroyView, because a Firestore callback can arrive after
     // the view has gone and would otherwise write into a view that is no longer on screen.
     private var binding: FragmentResourcesBinding? = null
-    private val adapter = ResourceAdapter()
+    private val adapter = ResourceAdapter { resource ->
+        startActivity(ResourceDetailActivity.newIntent(requireContext(), resource.id))
+    }
 
     // The whole published list, kept so that search and both filters run over it in memory. That is
     // what SCHEMA.md settled on for provinces, it needs no index, and it keeps all three working
