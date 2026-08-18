@@ -31,5 +31,9 @@
     <string name="settings_haptics">Vibration</string>
     <string name="settings_haptics_summary">Light vibration for feedback in the sensory tools. Switched off by sensory mode.</string>
 
+    <string name="resources_loading">Loading resources</string>
+    <string name="resources_empty">No resources to show yet</string>
+    <string name="resources_load_failed">Resources could not be loaded. Check your connection and try again.</string>
+
     <string name="cd_back">Back</string>
 </resources>
