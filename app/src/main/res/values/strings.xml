@@ -40,5 +40,16 @@
     <string name="resources_filter_province">Province</string>
     <string name="filter_all">All</string>
 
+    <string name="resource_call">Call %1$s</string>
+    <string name="resource_email">Email %1$s</string>
+    <string name="resource_website">Open website</string>
+    <string name="resource_map">Find on a map</string>
+    <string name="resource_not_found">This resource is no longer available.</string>
+    <string name="resource_load_failed">This resource could not be loaded. Check your connection and try again.</string>
+    <string name="resource_disclaimer">This directory is shared for information only. Services listed here are not checked or endorsed by Autism Allyship, and appearing here is not a recommendation. Please make your own enquiries before using a service.</string>
+    <string name="no_app_for_action">No app on this phone can open that.</string>
+
+    <string name="cd_resource_row">%1$s, %2$s</string>
+
     <string name="cd_back">Back</string>
 </resources>
