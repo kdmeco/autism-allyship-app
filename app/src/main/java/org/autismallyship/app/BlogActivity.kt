@@ -1,6 +1,7 @@
 package org.autismallyship.app
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +16,11 @@ class BlogActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBlogBinding
     private val adapter = BlogAdapter()
+
+    // The whole published list, kept so the category filter runs over it in memory rather than
+    // as a second query. The categories offered are exactly the ones present, so a selection can
+    // never come back empty and there is no separate "no matches" state to design for.
+    private var allPosts: List<Post> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         applyAppTheme(AppSettings(this))
@@ -34,6 +40,7 @@ class BlogActivity : AppCompatActivity() {
 
         binding.postList.layoutManager = LinearLayoutManager(this)
         binding.postList.adapter = adapter
+        binding.categoryInput.setOnItemClickListener { _, _, _, _ -> applyFilter() }
 
         loadPosts()
     }
@@ -41,9 +48,39 @@ class BlogActivity : AppCompatActivity() {
     private fun loadPosts() {
         showLoading()
         Repository.loadPosts(
-            onSuccess = { posts -> showPosts(posts) },
+            onSuccess = { posts -> showLoaded(posts) },
             onError = { showMessage(R.string.blog_load_failed) }
         )
+    }
+
+    private fun showLoaded(posts: List<Post>) {
+        allPosts = posts
+        fillCategoryOptions()
+        applyFilter()
+    }
+
+    private fun fillCategoryOptions() {
+        val all = getString(R.string.filter_all)
+        val categories = allPosts
+            .map { it.category }
+            .filter { it.isNotBlank() }
+            .distinct()
+            .sorted()
+
+        val field = binding.categoryInput
+        field.setAdapter(ArrayAdapter(this, android.R.layout.simple_list_item_1, listOf(all) + categories))
+        // A rotation restores the text in this field before the data comes back, so a choice the
+        // person already made is kept as long as it is still one of the options.
+        if (field.text.toString() !in listOf(all) + categories) {
+            field.setText(all, false)
+        }
+    }
+
+    private fun applyFilter() {
+        val all = getString(R.string.filter_all)
+        val category = binding.categoryInput.text.toString()
+        val matches = allPosts.filter { category == all || it.category == category }
+        showPosts(matches)
     }
 
     private fun showLoading() {
