@@ -26,7 +26,7 @@ class MoreFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.blogButton.setOnClickListener {
-            startActivity(PlaceholderActivity.newIntent(requireContext(), R.string.more_blog))
+            startActivity(Intent(requireContext(), BlogActivity::class.java))
         }
         binding.galleryButton.setOnClickListener {
             startActivity(PlaceholderActivity.newIntent(requireContext(), R.string.more_gallery))
