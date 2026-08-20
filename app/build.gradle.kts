@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.material)
     implementation(libs.zxing.core)
+    implementation(libs.play.services.code.scanner)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
