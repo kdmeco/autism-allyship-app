@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import org.autismallyship.app.data.Post
 import org.autismallyship.app.databinding.ItemPostBinding
 import java.text.SimpleDateFormat
@@ -47,8 +48,20 @@ class BlogAdapter(
             binding.postDate.text = post.publishedAt?.toDate()?.let { dateFormat.format(it) }.orEmpty()
             binding.postDate.isVisible = post.publishedAt != null
 
-            // No image loading library is wired in yet, so the ImageView keeps its placeholder
-            // background colour rather than showing a broken image icon.
+            // Glide handles the caching and, more importantly, cancels the previous request when a
+            // row is recycled, so a slow image cannot land in the wrong card while someone scrolls.
+            // A post with no image gets no box at all rather than an empty grey square.
+            binding.postImage.isVisible = post.imageUrl.isNotBlank()
+            if (post.imageUrl.isNotBlank()) {
+                Glide.with(binding.postImage).load(post.imageUrl).into(binding.postImage)
+            } else {
+                Glide.with(binding.postImage).clear(binding.postImage)
+            }
+
+            // imageAlt is optional in SCHEMA.md and nothing makes the admin fill it in. Null is the
+            // correct treatment for a decorative image, and it is what an empty alt means on the
+            // website. The row's own description below carries the meaning either way.
+            binding.postImage.contentDescription = post.imageAlt.ifBlank { null }
 
             binding.root.setOnClickListener { onPostClick(post) }
 
