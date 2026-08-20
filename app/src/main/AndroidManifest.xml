@@ -41,6 +41,10 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:name=".EventRegistrationActivity"
+            android:exported="false"
+            android:parentActivityName=".EventDetailActivity" />
+        <activity
             android:name=".BlogActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />

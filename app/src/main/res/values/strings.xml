@@ -114,6 +114,19 @@
     <string name="event_happening_today">Happening today</string>
     <string name="cd_event_row_today">%1$s, %2$s, %3$s</string>
 
+    <string name="event_register">Register</string>
+
+    <string name="register_title">Register</string>
+    <string name="register_name_label">Your name</string>
+    <string name="register_email_label">Email address</string>
+    <string name="register_quantity_label">Number of people</string>
+    <string name="register_submit">Confirm booking</string>
+    <string name="register_name_required">Please enter a name.</string>
+    <string name="register_email_invalid">Please enter a valid email address.</string>
+    <string name="register_quantity_invalid">Enter a number between 1 and 10.</string>
+    <string name="register_loading">Booking your place</string>
+    <string name="register_generic_error">Something went wrong. Check your connection and try again.</string>
+
     <string name="more_tickets">My tickets</string>
 
     <string name="tickets_title">My tickets</string>
