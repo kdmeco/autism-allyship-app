@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -17,15 +18,231 @@
             android:textSize="22sp"
             android:fontFamily="@font/poppins_semibold"
             android:textColor="?attr/colorOnSurface"
-            android:lineHeight="30sp" />
+            android:lineSpacingMultiplier="1.4" />
 
         <TextView
+            android:id="@+id/sensory_mode_banner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/coming_soon"
-            android:textSize="17sp"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:lineHeight="29sp" />
+            android:layout_marginTop="12dp"
+            android:background="?attr/colorSecondaryContainer"
+            android:padding="12dp"
+            android:text="@string/sensory_mode_tools_banner"
+            android:textColor="?attr/colorOnSecondaryContainer"
+            android:textSize="15sp"
+            android:lineSpacingMultiplier="1.4"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/breathing_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:checkable="false"
+                android:clickable="true"
+                android:focusable="true"
+                android:minHeight="140dp"
+                app:cardBackgroundColor="@color/sensory_breathing_fill"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_breathing"
+                        app:tint="@color/sensory_breathing" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/sensory_breathing_name"
+                        android:textColor="@color/sensory_breathing"
+                        android:textSize="17sp"
+                        android:lineSpacingMultiplier="1.4" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/sensory_breathing_desc"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:textSize="15sp"
+                        android:lineSpacingMultiplier="1.4" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/pop_it_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:checkable="false"
+                android:clickable="true"
+                android:focusable="true"
+                android:minHeight="140dp"
+                app:cardBackgroundColor="@color/sensory_pop_it_fill"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_pop_it"
+                        app:tint="@color/sensory_pop_it" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/sensory_pop_it_name"
+                        android:textColor="@color/sensory_pop_it"
+                        android:textSize="17sp"
+                        android:lineSpacingMultiplier="1.4" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/sensory_pop_it_desc"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:textSize="15sp"
+                        android:lineSpacingMultiplier="1.4" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/sounds_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:checkable="false"
+                android:clickable="true"
+                android:focusable="true"
+                android:minHeight="140dp"
+                app:cardBackgroundColor="@color/sensory_sounds_fill"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_sounds"
+                        app:tint="@color/sensory_sounds" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/sensory_sounds_name"
+                        android:textColor="@color/sensory_sounds"
+                        android:textSize="17sp"
+                        android:lineSpacingMultiplier="1.4" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/sensory_sounds_desc"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:textSize="15sp"
+                        android:lineSpacingMultiplier="1.4" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/tracing_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:checkable="false"
+                android:clickable="true"
+                android:focusable="true"
+                android:minHeight="140dp"
+                app:cardBackgroundColor="@color/sensory_tracing_fill"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_tracing"
+                        app:tint="@color/sensory_tracing" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/sensory_tracing_name"
+                        android:textColor="@color/sensory_tracing"
+                        android:textSize="17sp"
+                        android:lineSpacingMultiplier="1.4" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/sensory_tracing_desc"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:textSize="15sp"
+                        android:lineSpacingMultiplier="1.4" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

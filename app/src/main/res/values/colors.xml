@@ -24,14 +24,15 @@
     <!-- Sensory tool colours. Muted tints of the site's own hue rather than stock Material
          colours, one hue per tool so they read apart in the hub grid. _fill is a pale wash for
          a tool's card or background, the plain name is the stronger tone for its icon, the
-         moving element and its heading text. Every _fill/plain pair and every plain-on-page
-         pairing is at or above 4.5:1, computed, not eyeballed; see DECISIONS.md. -->
-    <color name="sensory_breathing">#3A7388</color>
+         moving element and its heading text. Every plain-on-_fill pairing, the one the hub card
+         actually renders, is at or above 4.7:1, computed against the fill it sits on, not just
+         against the page; see DECISIONS.md. -->
+    <color name="sensory_breathing">#367085</color>
     <color name="sensory_breathing_fill">#E8F0F3</color>
-    <color name="sensory_pop_it">#88663A</color>
+    <color name="sensory_pop_it">#856336</color>
     <color name="sensory_pop_it_fill">#F3EEE8</color>
-    <color name="sensory_sounds">#8955B6</color>
+    <color name="sensory_sounds">#844BB5</color>
     <color name="sensory_sounds_fill">#EEE8F3</color>
-    <color name="sensory_tracing">#347A59</color>
+    <color name="sensory_tracing">#307655</color>
     <color name="sensory_tracing_fill">#E8F3EE</color>
 </resources>
