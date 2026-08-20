@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import com.google.android.material.button.MaterialButton
+import com.google.firebase.Timestamp
 import org.autismallyship.app.data.Attachment
 import org.autismallyship.app.data.Event
 import org.autismallyship.app.data.Repository
@@ -77,6 +78,7 @@ class EventDetailActivity : AppCompatActivity() {
 
         showPrice(event)
         showCapacity(event)
+        showRegisterButton(event)
         showDescription(event.description)
         setUpCalendar(event)
         showAttachments(event.attachments)
@@ -120,6 +122,22 @@ class EventDetailActivity : AppCompatActivity() {
             resources.getQuantityString(R.plurals.event_places_left, left, left)
         }
         binding.eventCapacity.isVisible = true
+    }
+
+    // The register button only ever offers what the Worker will actually accept: free events
+    // (paid tickets are section 7's job against Paystack, see TODO-APP.md), not sold out, and
+    // not already past. Mirrors the same checks registerTicket makes in the api repo, so the
+    // button never invites a booking the server is about to refuse.
+    private fun showRegisterButton(event: Event) {
+        val isSoldOut = event.capacity > 0 && event.ticketsSold >= event.capacity
+        val canRegister = !event.isTicketed && !isSoldOut && Repository.isUpcoming(event, Timestamp.now())
+
+        binding.registerButton.isVisible = canRegister
+        if (canRegister) {
+            binding.registerButton.setOnClickListener {
+                startActivity(EventRegistrationActivity.newIntent(this, event.id, event.title))
+            }
+        }
     }
 
     // SCHEMA.md calls description rich text, so it is parsed as HTML rather than printed with the
