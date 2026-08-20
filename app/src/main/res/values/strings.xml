@@ -71,4 +71,19 @@
     <string name="events_past">Past events</string>
     <string name="event_ticketed">Tickets required</string>
     <string name="event_free">Free entry</string>
+
+    <string name="event_loading">Loading event</string>
+    <string name="event_not_found">This event is no longer available.</string>
+    <string name="event_load_failed">This event could not be loaded. Check your connection and try again.</string>
+    <string name="event_price">R%1$s</string>
+    <string name="event_sold_out">Sold out</string>
+    <string name="event_add_to_calendar">Add to my calendar</string>
+    <string name="event_attachments">Attachments</string>
+    <string name="event_attachment">Open attachment</string>
+    <string name="cd_event_row">%1$s, %2$s</string>
+
+    <plurals name="event_places_left">
+        <item quantity="one">%1$d place left</item>
+        <item quantity="other">%1$d places left</item>
+    </plurals>
 </resources>
