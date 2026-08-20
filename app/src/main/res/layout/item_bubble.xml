@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<View xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:layout_margin="6dp"
+    android:background="@drawable/circle_solid"
+    android:backgroundTint="@color/sensory_pop_it"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackgroundBorderless" />
