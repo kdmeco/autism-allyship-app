@@ -46,7 +46,8 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.glide)
     implementation(libs.material)
+    implementation(libs.zxing.core)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
-}
+}
