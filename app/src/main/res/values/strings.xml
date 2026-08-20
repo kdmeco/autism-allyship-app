@@ -10,6 +10,15 @@
     <string name="title_home">Home</string>
     <string name="title_events">Events</string>
     <string name="title_sensory">Sensory tools</string>
+    <string name="sensory_breathing_name">Guided breathing</string>
+    <string name="sensory_breathing_desc">A slow, expanding circle to breathe with</string>
+    <string name="sensory_pop_it_name">Virtual pop-it</string>
+    <string name="sensory_pop_it_desc">Bubbles that pop with a tap</string>
+    <string name="sensory_sounds_name">Calming sounds</string>
+    <string name="sensory_sounds_desc">Gentle looping sounds to play</string>
+    <string name="sensory_tracing_name">Shape tracing</string>
+    <string name="sensory_tracing_desc">Trace a shape with your finger</string>
+    <string name="cd_sensory_tool">%1$s. %2$s</string>
     <string name="title_resources">Resources</string>
     <string name="title_more">More</string>
 
