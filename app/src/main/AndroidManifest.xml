@@ -78,15 +78,16 @@
             android:parentActivityName=".MainActivity" />
 
         <!-- Exported because the whole point is that the link in the confirmation email opens
-             here. autoVerify is deliberately left off until the signing certificate fingerprints
-             are in Firebase and assetlinks.json is on the site, see CONSOLE-STEPS.md: with
-             autoVerify on and verification failing, Android 12 and later stop offering the app at
-             all, which is worse than the chooser we get without it. -->
+             here. autoVerify is on now that assetlinks.json is confirmed live at
+             autism-allyship.pages.dev/.well-known/assetlinks.json, see CONSOLE-STEPS.md: the app
+             opens directly instead of showing a chooser, for that exact host. Preview subdomains
+             under the wildcard below have no assetlinks.json of their own, so a link to one of
+             those still falls back to the chooser rather than failing outright. -->
         <activity
             android:name=".TicketDetailActivity"
             android:exported="true"
             android:parentActivityName=".MyTicketsActivity">
-            <intent-filter>
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -103,11 +104,11 @@
              given to staff, no visible control anywhere in the normal UI. No real page is served
              at this path, the link only exists to be opened by this app; a device without the app
              installed gets nothing useful from it, which is acceptable for a staff-only tool.
-             autoVerify is left off for the same reason as the ticket link above. -->
+             autoVerify is on, same reasoning and same assetlinks.json as the ticket link above. -->
         <activity
             android:name=".ScannerSignInActivity"
             android:exported="true">
-            <intent-filter>
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
