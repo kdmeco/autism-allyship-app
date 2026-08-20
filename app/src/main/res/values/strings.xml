@@ -20,6 +20,15 @@
     <string name="sensory_tracing_desc">Trace a shape with your finger</string>
     <string name="cd_sensory_tool">%1$s. %2$s</string>
     <string name="sensory_mode_tools_banner">Sensory mode is on. These tools use text instead of animation, and vibration is off.</string>
+
+    <string name="breathing_phase_in">Breathe in</string>
+    <string name="breathing_phase_out">Breathe out</string>
+    <string name="breathing_ready">Press start when you are ready</string>
+    <string name="breathing_start">Start</string>
+    <string name="breathing_pause">Pause</string>
+    <string name="breathing_pace">Pace</string>
+    <string name="breathing_pace_slow">Slower</string>
+    <string name="breathing_pace_fast">Faster</string>
     <string name="title_resources">Resources</string>
     <string name="title_more">More</string>
 
