@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -48,6 +50,10 @@
             android:parentActivityName=".BlogActivity" />
         <activity
             android:name=".MyTicketsActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".BreathingActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
 
