@@ -52,5 +52,11 @@
 
     <string name="cd_resource_row">%1$s, %2$s</string>
 
+    <string name="title_blog">Blog</string>
+    <string name="blog_loading">Loading posts</string>
+    <string name="blog_empty">No posts to show yet</string>
+    <string name="blog_load_failed">Posts could not be loaded. Check your connection and try again.</string>
+    <string name="blog_filter_category">Category</string>
+
     <string name="cd_back">Back</string>
 </resources>
