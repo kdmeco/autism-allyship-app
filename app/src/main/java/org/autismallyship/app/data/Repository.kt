@@ -59,12 +59,17 @@ object Repository {
 
     // The category pills filter this list in code. The posts index that supports the ordering here
     // already exists, and filtering in code keeps it to that one.
-    fun loadPosts(onSuccess: (List<Post>) -> Unit, onError: (Exception) -> Unit) {
+    //
+    // fromCache mirrors loadResources: Firestore's own word for "this answer came off the disk,
+    // not the server", which is what the blog list's offline banner needs.
+    fun loadPosts(onSuccess: (posts: List<Post>, fromCache: Boolean) -> Unit, onError: (Exception) -> Unit) {
         db.collection(POSTS)
             .whereEqualTo("published", true)
             .orderBy("publishedAt", Query.Direction.DESCENDING)
             .get()
-            .addOnSuccessListener { snapshot -> onSuccess(snapshot.toObjects(Post::class.java)) }
+            .addOnSuccessListener { snapshot ->
+                onSuccess(snapshot.toObjects(Post::class.java), snapshot.metadata.isFromCache)
+            }
             .addOnFailureListener { error -> onError(error) }
     }
 
