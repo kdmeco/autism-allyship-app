@@ -9,7 +9,9 @@ import org.autismallyship.app.databinding.ItemPostBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class BlogAdapter : RecyclerView.Adapter<BlogAdapter.PostViewHolder>() {
+class BlogAdapter(
+    private val onPostClick: (Post) -> Unit
+) : RecyclerView.Adapter<BlogAdapter.PostViewHolder>() {
 
     private val posts = mutableListOf<Post>()
 
@@ -25,7 +27,7 @@ class BlogAdapter : RecyclerView.Adapter<BlogAdapter.PostViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        holder.bind(posts[position])
+        holder.bind(posts[position], onPostClick)
     }
 
     override fun getItemCount(): Int = posts.size
@@ -36,7 +38,7 @@ class BlogAdapter : RecyclerView.Adapter<BlogAdapter.PostViewHolder>() {
         // numeric MM/DD some locales default to.
         private val dateFormat = SimpleDateFormat("d MMMM yyyy", Locale.getDefault())
 
-        fun bind(post: Post) {
+        fun bind(post: Post, onPostClick: (Post) -> Unit) {
             binding.postTitle.text = post.title
 
             binding.postCategory.text = post.category
@@ -47,6 +49,17 @@ class BlogAdapter : RecyclerView.Adapter<BlogAdapter.PostViewHolder>() {
 
             // No image loading library is wired in yet, so the ImageView keeps its placeholder
             // background colour rather than showing a broken image icon.
+
+            binding.root.setOnClickListener { onPostClick(post) }
+
+            // TalkBack treats a tappable row as one item, so the row carries its own description
+            // rather than leaving the reader to stitch the separate text views together.
+            val context = binding.root.context
+            binding.root.contentDescription = if (post.category.isBlank()) {
+                post.title
+            } else {
+                context.getString(R.string.cd_post_row, post.title, post.category)
+            }
         }
     }
 }
