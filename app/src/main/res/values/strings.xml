@@ -19,6 +19,7 @@
     <string name="sensory_tracing_name">Shape tracing</string>
     <string name="sensory_tracing_desc">Trace a shape with your finger</string>
     <string name="cd_sensory_tool">%1$s. %2$s</string>
+    <string name="sensory_mode_tools_banner">Sensory mode is on. These tools use text instead of animation, and vibration is off.</string>
     <string name="title_resources">Resources</string>
     <string name="title_more">More</string>
 

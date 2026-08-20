@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import org.autismallyship.app.databinding.FragmentSensoryBinding
 
@@ -18,6 +19,11 @@ class SensoryFragment : Fragment() {
     ): View {
         val binding = FragmentSensoryBinding.inflate(inflater, container, false)
         this.binding = binding
+
+        // Read once here rather than in onResume. MainActivity already recreates itself whenever
+        // sensory mode changes, per its own onResume check, so this Fragment is always freshly
+        // built with the current value by the time anyone sees it.
+        binding.sensoryModeBanner.isVisible = AppSettings(requireContext()).isSensoryMode()
 
         // Each card opens PlaceholderActivity until its own tool screen is built, the same
         // pattern the More sheet uses. Swapping a card to its real Activity is a one-line change
