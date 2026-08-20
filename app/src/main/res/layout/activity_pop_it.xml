@@ -58,6 +58,29 @@
                 android:contentDescription="@string/settings_haptics" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/pop_it_sound"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="17sp"
+                android:fontFamily="@font/poppins_medium" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/sound_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:contentDescription="@string/pop_it_sound" />
+        </LinearLayout>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/reset_button"
             style="@style/Widget.Material3.Button.OutlinedButton"

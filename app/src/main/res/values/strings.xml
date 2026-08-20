@@ -33,6 +33,7 @@
     <string name="pop_it_bubble_unpopped">Bubble</string>
     <string name="pop_it_bubble_popped">Popped bubble</string>
     <string name="pop_it_reset">Reset</string>
+    <string name="pop_it_sound">Pop sound</string>
 
     <string name="tracing_shape_circle">Circle</string>
     <string name="tracing_shape_square">Square</string>
@@ -42,6 +43,14 @@
     <string name="tracing_clear">Clear</string>
     <string name="tracing_complete">Nicely traced</string>
     <string name="cd_tracing_canvas">Tracing area. Trace the shape\'s outline with your finger.</string>
+
+    <string name="sounds_rain">Rain</string>
+    <string name="sounds_ocean">Ocean waves</string>
+    <string name="sounds_waterfall">Waterfall</string>
+    <string name="sounds_volume">Volume</string>
+    <string name="cd_sounds_play">Play %1$s</string>
+    <string name="cd_sounds_pause">Pause %1$s</string>
+
     <string name="title_resources">Resources</string>
     <string name="title_more">More</string>
 
