@@ -4,6 +4,9 @@ import com.google.firebase.Firebase
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.firestore
+import java.time.LocalTime
+import java.time.ZoneId
+import java.util.Date
 
 // Every Firestore read the app makes goes through here, so no screen builds a query of its own and
 // the field names from SCHEMA.md appear in one file rather than twenty.
@@ -212,14 +215,34 @@ object Repository {
 
     // An event with no startsAt cannot be placed on a timeline, so it appears in neither list rather
     // than being guessed at. SCHEMA.md marks the field required, so this should not happen.
+    //
+    // Both compare against the end of the day the event starts on, not against startsAt itself.
+    // SCHEMA.md has no endsAt, and adding one was declined on 20 Aug 2026 because the foundation's
+    // flagship event is an all day picnic with no stated finish time, so nobody could fill the field
+    // in honestly. Comparing against startsAt would file that picnic under past events one minute
+    // after it began, while people were still at it. The website applies the same rule.
     private fun isUpcoming(event: Event, now: Timestamp): Boolean {
         val startsAt = event.startsAt ?: return false
-        return startsAt >= now
+        return endOfDay(startsAt) >= now
     }
 
     private fun hasPassed(event: Event, now: Timestamp): Boolean {
         val startsAt = event.startsAt ?: return false
-        return startsAt < now
+        return endOfDay(startsAt) < now
+    }
+
+    // 23:59:59.999 on the event's own day, worked out in the phone's time zone, which is where the
+    // person reading the list is standing. Sorting still uses startsAt, so nothing else moves and
+    // the queries stay index free.
+    private fun endOfDay(startsAt: Timestamp): Timestamp {
+        val zone = ZoneId.systemDefault()
+        val lastMoment = startsAt.toDate().toInstant()
+            .atZone(zone)
+            .toLocalDate()
+            .atTime(LocalTime.MAX)
+            .atZone(zone)
+            .toInstant()
+        return Timestamp(Date.from(lastMoment))
     }
 
     private const val EVENTS = "events"
