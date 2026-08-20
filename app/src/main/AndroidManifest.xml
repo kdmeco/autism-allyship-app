@@ -45,6 +45,10 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:name=".EventWebViewActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".EventRegistrationActivity"
             android:exported="false"
             android:parentActivityName=".EventDetailActivity" />

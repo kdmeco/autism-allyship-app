@@ -154,6 +154,8 @@
     <string name="event_free">Free entry</string>
 
     <string name="event_loading">Loading event</string>
+    <string name="event_webview_loading">Loading event</string>
+    <string name="event_webview_load_failed">This event could not be loaded. Check your connection and try again.</string>
     <string name="event_not_found">This event is no longer available.</string>
     <string name="event_load_failed">This event could not be loaded. Check your connection and try again.</string>
     <string name="event_price">R%1$s</string>

@@ -17,7 +17,7 @@ class EventsFragment : Fragment() {
     // the view has gone and would otherwise write into a view that is no longer on screen.
     private var binding: FragmentEventsBinding? = null
     private val adapter = EventAdapter { event ->
-        startActivity(EventDetailActivity.newIntent(requireContext(), event.id))
+        startActivity(EventWebViewActivity.newIntent(requireContext(), event.id, event.title))
     }
 
     override fun onCreateView(
