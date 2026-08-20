@@ -140,9 +140,18 @@ object Repository {
     // query on the token field would be refused for anyone who is not an admin. onSuccess with
     // null means no ticket matched, which the scanner shows as "not a valid ticket" and a deep
     // link shows as a broken or expired link.
-    fun loadTicketByToken(token: String, onSuccess: (Ticket?) -> Unit, onError: (Exception) -> Unit) {
+    //
+    // fromCache mirrors loadResources and loadPosts. On a ticket it does not mean the QR is stale,
+    // the token never changes, it means redeemed may be behind what the door has already seen.
+    fun loadTicketByToken(
+        token: String,
+        onSuccess: (ticket: Ticket?, fromCache: Boolean) -> Unit,
+        onError: (Exception) -> Unit
+    ) {
         db.collection(TICKETS).document(token).get()
-            .addOnSuccessListener { document -> onSuccess(document.toObject(Ticket::class.java)) }
+            .addOnSuccessListener { document ->
+                onSuccess(document.toObject(Ticket::class.java), document.metadata.isFromCache)
+            }
             .addOnFailureListener { error -> onError(error) }
     }
 
@@ -150,18 +159,22 @@ object Repository {
     // batched query, for the same reason as above: a whereIn on the token field is still a list
     // operation under the rules, even filtered down to a handful of known IDs. Sorted earliest
     // first, so the screen can cut the list at today.
+    //
+    // A token with no document behind it is left out rather than reported. That is what a ticket
+    // deleted under SCHEMA.md's 12 month retention looks like from here, and it is not an error.
     fun loadTicketsByTokens(
         tokens: List<String>,
-        onSuccess: (List<Ticket>) -> Unit,
+        onSuccess: (tickets: List<Ticket>, fromCache: Boolean) -> Unit,
         onError: (Exception) -> Unit
     ) {
         if (tokens.isEmpty()) {
-            onSuccess(emptyList())
+            onSuccess(emptyList(), false)
             return
         }
 
         val found = mutableListOf<Ticket>()
         var stillWaiting = tokens.size
+        var anyFromCache = false
         var alreadyFailed = false
 
         for (token in tokens) {
@@ -169,9 +182,10 @@ object Repository {
                 .addOnSuccessListener { document ->
                     if (alreadyFailed) return@addOnSuccessListener
                     document.toObject(Ticket::class.java)?.let { found.add(it) }
+                    if (document.metadata.isFromCache) anyFromCache = true
                     stillWaiting--
                     if (stillWaiting == 0) {
-                        onSuccess(found.sortedBy { it.eventStartsAt })
+                        onSuccess(found.sortedBy { it.eventStartsAt }, anyFromCache)
                     }
                 }
                 .addOnFailureListener { error ->
@@ -180,6 +194,30 @@ object Repository {
                     onError(error)
                 }
         }
+    }
+
+    // My Tickets splits on the same end of day rule the events list uses, so a ticket for today's
+    // picnic is still under Upcoming at lunchtime rather than dropping into past the minute the
+    // event started.
+    //
+    // A ticket with no eventStartsAt counts as upcoming. An event missing that field is left out
+    // of both event lists because it cannot be placed on a timeline, but a ticket somebody is
+    // holding has to stay reachable, and upcoming is the half they will look in.
+    fun loadMyTickets(
+        tokens: List<String>,
+        onSuccess: (upcoming: List<Ticket>, past: List<Ticket>, fromCache: Boolean) -> Unit,
+        onError: (Exception) -> Unit
+    ) {
+        val now = Timestamp.now()
+        loadTicketsByTokens(
+            tokens,
+            onSuccess = { tickets, fromCache ->
+                val upcoming = tickets.filter { isTicketUpcoming(it, now) }
+                val past = tickets.filterNot { isTicketUpcoming(it, now) }
+                onSuccess(upcoming, past.sortedByDescending { it.eventStartsAt }, fromCache)
+            },
+            onError = onError
+        )
     }
 
     // The scanner calls this after Firebase Auth sign in. A staff member who is not in the
@@ -229,6 +267,11 @@ object Repository {
     private fun hasPassed(event: Event, now: Timestamp): Boolean {
         val startsAt = event.startsAt ?: return false
         return endOfDay(startsAt) < now
+    }
+
+    private fun isTicketUpcoming(ticket: Ticket, now: Timestamp): Boolean {
+        val startsAt = ticket.eventStartsAt ?: return true
+        return endOfDay(startsAt) >= now
     }
 
     // 23:59:59.999 on the event's own day, worked out in the phone's time zone, which is where the
