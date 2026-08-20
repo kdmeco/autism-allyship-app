@@ -15,13 +15,13 @@
     <color name="accent_text_soft">#D98CA6</color>
 
     <!-- Same hues as the light theme, relit for a dark page. See colors.xml for what each pairing
-         is for. Every plain-on-page pairing here is 5.9:1 or higher, computed against #141213. -->
-    <color name="sensory_breathing">#499CBA</color>
+         is for. Every plain-on-_fill pairing here is 4.7:1 or higher against its own card. -->
+    <color name="sensory_breathing">#51A4C2</color>
     <color name="sensory_breathing_fill">#213036</color>
-    <color name="sensory_pop_it">#BA8948</color>
+    <color name="sensory_pop_it">#C29151</color>
     <color name="sensory_pop_it_fill">#362D21</color>
-    <color name="sensory_sounds">#AA81CF</color>
+    <color name="sensory_sounds">#AA7ED2</color>
     <color name="sensory_sounds_fill">#2C2136</color>
-    <color name="sensory_tracing">#3EA374</color>
+    <color name="sensory_tracing">#3EB17C</color>
     <color name="sensory_tracing_fill">#21362C</color>
 </resources>
