@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ticket_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:title="@string/ticket_title"
+        app:navigationContentDescription="@string/cd_back"
+        app:navigationIcon="?attr/homeAsUpIndicator" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ScrollView
+            android:id="@+id/ticket_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/offline_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="?attr/colorSecondaryContainer"
+                    android:padding="12dp"
+                    android:text="@string/ticket_offline"
+                    android:textColor="?attr/colorOnSecondaryContainer"
+                    android:textSize="15sp"
+                    android:lineSpacingMultiplier="1.4"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/ticket_redeemed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="?attr/colorSecondaryContainer"
+                    android:padding="12dp"
+                    android:text="@string/ticket_redeemed_detail"
+                    android:textColor="?attr/colorOnSecondaryContainer"
+                    android:textSize="17sp"
+                    android:lineSpacingMultiplier="1.4"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/qr_background"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/ticket_qr"
+                        android:layout_width="280dp"
+                        android:layout_height="280dp"
+                        android:contentDescription="@string/cd_ticket_qr" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/ticket_event"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="22sp"
+                    android:lineSpacingMultiplier="1.4" />
+
+                <TextView
+                    android:id="@+id/ticket_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="17sp"
+                    android:lineSpacingMultiplier="1.4" />
+
+                <TextView
+                    android:id="@+id/ticket_booked_by"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="17sp"
+                    android:lineSpacingMultiplier="1.4" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/ticket_door_note"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="15sp"
+                    android:lineSpacingMultiplier="1.4" />
+            </LinearLayout>
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/loading_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/ticket_loading"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/ticket_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="24dp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="17sp"
+            android:lineSpacingMultiplier="1.4"
+            android:visibility="gone" />
+    </FrameLayout>
+</LinearLayout>

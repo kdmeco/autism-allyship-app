@@ -46,6 +46,32 @@
             android:name=".BlogArticleActivity"
             android:exported="false"
             android:parentActivityName=".BlogActivity" />
+        <activity
+            android:name=".MyTicketsActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Exported because the whole point is that the link in the confirmation email opens
+             here. autoVerify is deliberately left off until the signing certificate fingerprints
+             are in Firebase and assetlinks.json is on the site, see CONSOLE-STEPS.md: with
+             autoVerify on and verification failing, Android 12 and later stop offering the app at
+             all, which is worse than the chooser we get without it. -->
+        <activity
+            android:name=".TicketDetailActivity"
+            android:exported="true"
+            android:parentActivityName=".MyTicketsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="https" />
+                <data android:host="autism-allyship.pages.dev" />
+                <data android:host="*.autism-allyship.pages.dev" />
+                <data android:path="/ticket.html" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
