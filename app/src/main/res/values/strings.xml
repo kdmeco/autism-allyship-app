@@ -55,6 +55,7 @@
     <string name="title_more">More</string>
 
     <string name="coming_soon">Content coming soon</string>
+    <string name="home_next_event_label">Next event</string>
 
     <string name="more_blog">Blog</string>
     <string name="more_gallery">Gallery</string>
@@ -177,4 +178,32 @@
     <string name="ticket_offline">You are offline. This ticket still works, it was saved on this phone.</string>
     <string name="ticket_door_note">Show this code at the door. The screen brightens on its own so it scans in daylight.</string>
     <string name="cd_ticket_qr">QR code for this ticket</string>
+
+    <string name="scanner_sign_in_title">Staff sign in</string>
+    <string name="scanner_email_label">Email address</string>
+    <string name="scanner_password_label">Password</string>
+    <string name="scanner_sign_in_button">Sign in</string>
+    <string name="scanner_sign_in_loading">Signing in</string>
+    <string name="scanner_sign_in_error">Could not sign in. Check your email and password and try again.</string>
+    <string name="scanner_email_required">Please enter your email address.</string>
+    <string name="scanner_password_required">Please enter your password.</string>
+    <string name="scanner_not_staff">This account is not set up for the scanner. Ask an admin to give you access.</string>
+    <string name="scanner_check_failed">Could not check your scanner access. Check your connection and try again.</string>
+
+    <string name="scanner_title">Scanner</string>
+    <string name="scanner_scan_button">Scan ticket</string>
+    <string name="scanner_scanning">Checking ticket</string>
+    <string name="scanner_scan_failed">The scan did not work. Try again.</string>
+    <string name="scanner_sign_out">Sign out</string>
+
+    <string name="scanner_result_redeemed">Valid, now redeemed.</string>
+    <string name="scanner_result_already_redeemed_at">Already redeemed at %1$s.</string>
+    <string name="scanner_result_not_valid">Not a valid ticket.</string>
+    <string name="scanner_result_queued">No signal. This scan is saved and will be checked in automatically once this phone is back online.</string>
+    <string name="scanner_result_failed">Something went wrong checking this ticket. Try scanning again.</string>
+
+    <plurals name="scanner_queue_pending">
+        <item quantity="one">%1$d scan waiting to sync</item>
+        <item quantity="other">%1$d scans waiting to sync</item>
+    </plurals>
 </resources>

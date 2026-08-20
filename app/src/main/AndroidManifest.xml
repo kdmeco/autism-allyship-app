@@ -98,6 +98,31 @@
                 <data android:path="/ticket.html" />
             </intent-filter>
         </activity>
+
+        <!-- The scanner's only door in, RULES-APP.md section 7: reachable only by a deep link
+             given to staff, no visible control anywhere in the normal UI. No real page is served
+             at this path, the link only exists to be opened by this app; a device without the app
+             installed gets nothing useful from it, which is acceptable for a staff-only tool.
+             autoVerify is left off for the same reason as the ticket link above. -->
+        <activity
+            android:name=".ScannerSignInActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="https" />
+                <data android:host="autism-allyship.pages.dev" />
+                <data android:host="*.autism-allyship.pages.dev" />
+                <data android:path="/scanner" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ScannerActivity"
+            android:exported="false"
+            android:parentActivityName=".ScannerSignInActivity" />
     </application>
 
 </manifest>

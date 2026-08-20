@@ -19,10 +19,68 @@
             android:textColor="?attr/colorOnSurface"
             android:lineHeight="30sp" />
 
+        <LinearLayout
+            android:id="@+id/next_event_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/next_event_background"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:minHeight="48dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/home_next_event_label"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="15sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:id="@+id/next_event_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/badge_background"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:text="@string/event_happening_today"
+                android:textColor="?attr/colorOnSecondaryContainer"
+                android:textSize="15sp"
+                android:lineSpacingMultiplier="1.4"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/next_event_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:id="@+id/next_event_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="15sp"
+                android:lineSpacingMultiplier="1.4" />
+        </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="@string/coming_soon"
             android:textSize="17sp"
             android:textColor="?attr/colorOnSurfaceVariant"
