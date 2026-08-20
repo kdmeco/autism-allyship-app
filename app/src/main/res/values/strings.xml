@@ -90,4 +90,37 @@
 
     <string name="event_happening_today">Happening today</string>
     <string name="cd_event_row_today">%1$s, %2$s, %3$s</string>
+
+    <string name="more_tickets">My tickets</string>
+
+    <string name="tickets_title">My tickets</string>
+    <string name="tickets_loading">Loading your tickets</string>
+    <string name="tickets_empty">You have no tickets yet. Open the ticket link from your confirmation email and it is saved here.</string>
+    <string name="tickets_load_failed">Your tickets could not be loaded. Check your connection and try again.</string>
+    <string name="tickets_upcoming">Upcoming</string>
+
+    <plurals name="tickets_show_past">
+        <item quantity="one">Show %1$d past ticket</item>
+        <item quantity="other">Show %1$d past tickets</item>
+    </plurals>
+
+    <plurals name="tickets_hide_past">
+        <item quantity="one">Hide %1$d past ticket</item>
+        <item quantity="other">Hide %1$d past tickets</item>
+    </plurals>
+
+    <plurals name="ticket_booked_by">
+        <item quantity="one">Booked by %1$s, %2$d person</item>
+        <item quantity="other">Booked by %1$s, %2$d people</item>
+    </plurals>
+
+    <string name="ticket_title">Ticket</string>
+    <string name="ticket_loading">Loading ticket</string>
+    <string name="ticket_not_found">This ticket could not be found. The link may be wrong, or the ticket may have been removed.</string>
+    <string name="ticket_load_failed">This ticket could not be loaded. Check your connection and try again.</string>
+    <string name="ticket_redeemed">Already used</string>
+    <string name="ticket_redeemed_detail">This ticket has already been used at the door.</string>
+    <string name="ticket_offline">You are offline. This ticket still works, it was saved on this phone.</string>
+    <string name="ticket_door_note">Show this code at the door. The screen brightens on its own so it scans in daylight.</string>
+    <string name="cd_ticket_qr">QR code for this ticket</string>
 </resources>

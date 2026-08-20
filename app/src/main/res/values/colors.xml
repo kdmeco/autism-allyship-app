@@ -3,6 +3,13 @@
     <color name="page">#FBFAFA</color>
     <color name="surface">#FFFFFF</color>
     <color name="surface_alt">#F0EDEE</color>
+
+    <!-- Deliberately absent from values-night. A QR on a dark background does not scan, so the
+         panel behind the ticket code stays white in both themes. Sitting here beside the other
+         surfaces rather than at the end of the file, so it does not collide with whatever the
+         next person appends. -->
+    <color name="qr_background">#FFFFFF</color>
+
     <color name="text">#1C181A</color>
     <color name="text_muted">#575053</color>
     <color name="line">#DAD4D6</color>
