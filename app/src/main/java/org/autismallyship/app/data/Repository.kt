@@ -127,23 +127,21 @@ object Repository {
             .addOnFailureListener { error -> onError(error) }
     }
 
-    // Tickets are found by token, not by document ID, because the token is what the emailed link
-    // carries. onSuccess with null means no ticket matched, which the scanner shows as "not a valid
-    // ticket" and a deep link shows as a broken or expired link.
+    // Tickets are looked up by document ID, which is the token itself. SCHEMA.md settled this on
+    // 20 Aug: the security rules allow get on a known ID but never list on the collection, so a
+    // query on the token field would be refused for anyone who is not an admin. onSuccess with
+    // null means no ticket matched, which the scanner shows as "not a valid ticket" and a deep
+    // link shows as a broken or expired link.
     fun loadTicketByToken(token: String, onSuccess: (Ticket?) -> Unit, onError: (Exception) -> Unit) {
-        db.collection(TICKETS)
-            .whereEqualTo("token", token)
-            .limit(1)
-            .get()
-            .addOnSuccessListener { snapshot ->
-                onSuccess(snapshot.toObjects(Ticket::class.java).firstOrNull())
-            }
+        db.collection(TICKETS).document(token).get()
+            .addOnSuccessListener { document -> onSuccess(document.toObject(Ticket::class.java)) }
             .addOnFailureListener { error -> onError(error) }
     }
 
-    // My Tickets reads the tokens it saved locally, so it asks for several at once. Firestore takes
-    // at most thirty values in a whereIn, which is why a longer list goes out as more than one query
-    // and is joined here. Sorted earliest first, so the screen can cut the list at today.
+    // My Tickets reads the tokens it saved locally. Each is its own document get rather than a
+    // batched query, for the same reason as above: a whereIn on the token field is still a list
+    // operation under the rules, even filtered down to a handful of known IDs. Sorted earliest
+    // first, so the screen can cut the list at today.
     fun loadTicketsByTokens(
         tokens: List<String>,
         onSuccess: (List<Ticket>) -> Unit,
@@ -154,18 +152,15 @@ object Repository {
             return
         }
 
-        val batches = tokens.chunked(30)
         val found = mutableListOf<Ticket>()
-        var stillWaiting = batches.size
+        var stillWaiting = tokens.size
         var alreadyFailed = false
 
-        for (batch in batches) {
-            db.collection(TICKETS)
-                .whereIn("token", batch)
-                .get()
-                .addOnSuccessListener { snapshot ->
+        for (token in tokens) {
+            db.collection(TICKETS).document(token).get()
+                .addOnSuccessListener { document ->
                     if (alreadyFailed) return@addOnSuccessListener
-                    found.addAll(snapshot.toObjects(Ticket::class.java))
+                    document.toObject(Ticket::class.java)?.let { found.add(it) }
                     stillWaiting--
                     if (stillWaiting == 0) {
                         onSuccess(found.sortedBy { it.eventStartsAt })
