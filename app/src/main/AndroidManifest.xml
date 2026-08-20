@@ -38,6 +38,10 @@
             android:name=".BlogActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".BlogArticleActivity"
+            android:exported="false"
+            android:parentActivityName=".BlogActivity" />
     </application>
 
 </manifest>
