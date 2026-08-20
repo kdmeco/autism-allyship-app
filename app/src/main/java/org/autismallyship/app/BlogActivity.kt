@@ -48,13 +48,18 @@ class BlogActivity : AppCompatActivity() {
     private fun loadPosts() {
         showLoading()
         Repository.loadPosts(
-            onSuccess = { posts -> showLoaded(posts) },
+            onSuccess = { posts, fromCache -> showLoaded(posts, fromCache) },
             onError = { showMessage(R.string.blog_load_failed) }
         )
     }
 
-    private fun showLoaded(posts: List<Post>) {
+    private fun showLoaded(posts: List<Post>, fromCache: Boolean) {
         allPosts = posts
+
+        // Firestore tells us whether the answer came off the disk rather than the server, so the
+        // banner appears exactly when what is on screen might be out of date.
+        binding.offlineBanner.isVisible = fromCache
+
         fillCategoryOptions()
         applyFilter()
     }
@@ -87,6 +92,7 @@ class BlogActivity : AppCompatActivity() {
         // Sensory mode allows no animation anywhere in the app, and a spinner is an animation, so
         // it is replaced with a line of text rather than slowed down.
         val sensoryMode = AppSettings(this).isSensoryMode()
+        binding.offlineBanner.isVisible = false
         binding.loadingSpinner.isVisible = !sensoryMode
         binding.listMessage.setText(R.string.blog_loading)
         binding.listMessage.isVisible = sensoryMode

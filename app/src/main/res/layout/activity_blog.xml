@@ -16,6 +16,18 @@
         app:navigationContentDescription="@string/cd_back"
         app:navigationIcon="?attr/homeAsUpIndicator" />
 
+    <TextView
+        android:id="@+id/offline_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSecondaryContainer"
+        android:padding="12dp"
+        android:text="@string/offline_banner"
+        android:textColor="?attr/colorOnSecondaryContainer"
+        android:textSize="15sp"
+        android:lineSpacingMultiplier="1.4"
+        android:visibility="gone" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/category_field"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
