@@ -13,7 +13,9 @@ import java.util.Locale
 
 // Upcoming and past share one list rather than two, so the two headings scroll away with their own
 // events instead of one section staying pinned while the other moves.
-class EventAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class EventAdapter(
+    private val onEventClick: (Event) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private sealed interface Row {
         data class Heading(val titleRes: Int) : Row
@@ -52,7 +54,7 @@ class EventAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (val row = rows[position]) {
             is Row.Heading -> (holder as HeadingViewHolder).bind(row.titleRes)
-            is Row.Entry -> (holder as EventViewHolder).bind(row.event)
+            is Row.Entry -> (holder as EventViewHolder).bind(row.event, onEventClick)
         }
     }
 
@@ -80,15 +82,27 @@ class EventAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         // is not much use to anyone deciding whether they can get there.
         private val dateFormat = SimpleDateFormat("d MMMM yyyy, HH:mm", Locale.getDefault())
 
-        fun bind(event: Event) {
+        fun bind(event: Event, onEventClick: (Event) -> Unit) {
             binding.eventTitle.text = event.title
 
-            binding.eventDate.text = event.startsAt?.toDate()?.let { dateFormat.format(it) }.orEmpty()
-            binding.eventDate.isVisible = event.startsAt != null
+            val date = event.startsAt?.toDate()?.let { dateFormat.format(it) }.orEmpty()
+            binding.eventDate.text = date
+            binding.eventDate.isVisible = date.isNotBlank()
 
             binding.eventTickets.setText(
                 if (event.isTicketed) R.string.event_ticketed else R.string.event_free
             )
+
+            binding.root.setOnClickListener { onEventClick(event) }
+
+            // TalkBack treats a tappable row as one item, so the row carries its own description
+            // rather than leaving the reader to stitch three separate text views together.
+            val context = binding.root.context
+            binding.root.contentDescription = if (date.isBlank()) {
+                event.title
+            } else {
+                context.getString(R.string.cd_event_row, event.title, date)
+            }
 
             // No image loading library is wired in yet, so the ImageView keeps its placeholder
             // background colour rather than showing a broken image icon. Same as the blog list.

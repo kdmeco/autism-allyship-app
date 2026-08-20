@@ -16,7 +16,9 @@ class EventsFragment : Fragment() {
     // Held as a nullable and cleared in onDestroyView, because a Firestore callback can arrive after
     // the view has gone and would otherwise write into a view that is no longer on screen.
     private var binding: FragmentEventsBinding? = null
-    private val adapter = EventAdapter()
+    private val adapter = EventAdapter { event ->
+        startActivity(EventDetailActivity.newIntent(requireContext(), event.id))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
