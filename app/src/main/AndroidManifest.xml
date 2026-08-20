@@ -60,6 +60,10 @@
             android:name=".PopItActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ShapeTracingActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
 
         <!-- Exported because the whole point is that the link in the confirmation email opens
              here. autoVerify is deliberately left off until the signing certificate fingerprints
