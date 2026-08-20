@@ -42,6 +42,15 @@ class AppSettings(context: Context) {
         prefs.edit().putString(KEY_HAPTICS, if (on) ON else OFF).apply()
     }
 
+    // The pop-it's sound effect only. Deliberately not tied to sensory mode the way haptics are:
+    // the calming sounds tool exists to play sound in exactly that state, so a blanket mute would
+    // break the one tool someone in sensory mode is most likely to want.
+    fun popSoundAllowed(): Boolean = prefs.getString(KEY_POP_SOUND, ON) == ON
+
+    fun setPopSound(on: Boolean) {
+        prefs.edit().putString(KEY_POP_SOUND, if (on) ON else OFF).apply()
+    }
+
     companion object {
         const val THEME_SYSTEM = "system"
         const val THEME_LIGHT = "light"
@@ -54,6 +63,7 @@ class AppSettings(context: Context) {
         private const val KEY_THEME = "aaf-theme"
         private const val KEY_SENSORY = "aaf-sensory-mode"
         private const val KEY_HAPTICS = "aaf-haptics"
+        private const val KEY_POP_SOUND = "aaf-pop-sound"
     }
 }
 
