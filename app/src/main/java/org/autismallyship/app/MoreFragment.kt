@@ -38,7 +38,7 @@ class MoreFragment : Fragment() {
             startActivity(PlaceholderActivity.newIntent(requireContext(), R.string.more_shop))
         }
         binding.donateButton.setOnClickListener {
-            startActivity(PlaceholderActivity.newIntent(requireContext(), R.string.more_donate))
+            startActivity(Intent(requireContext(), DonateActivity::class.java))
         }
         binding.aboutButton.setOnClickListener {
             startActivity(PlaceholderActivity.newIntent(requireContext(), R.string.more_about))
