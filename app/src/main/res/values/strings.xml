@@ -86,4 +86,7 @@
         <item quantity="one">%1$d place left</item>
         <item quantity="other">%1$d places left</item>
     </plurals>
+
+    <string name="event_happening_today">Happening today</string>
+    <string name="cd_event_row_today">%1$s, %2$s, %3$s</string>
 </resources>

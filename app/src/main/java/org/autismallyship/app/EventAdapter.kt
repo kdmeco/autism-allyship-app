@@ -9,6 +9,9 @@ import org.autismallyship.app.data.Event
 import org.autismallyship.app.databinding.ItemEventBinding
 import org.autismallyship.app.databinding.ItemEventHeaderBinding
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.ZoneId
+import java.util.Date
 import java.util.Locale
 
 // Upcoming and past share one list rather than two, so the two headings scroll away with their own
@@ -85,7 +88,8 @@ class EventAdapter(
         fun bind(event: Event, onEventClick: (Event) -> Unit) {
             binding.eventTitle.text = event.title
 
-            val date = event.startsAt?.toDate()?.let { dateFormat.format(it) }.orEmpty()
+            val startsAt = event.startsAt?.toDate()
+            val date = startsAt?.let { dateFormat.format(it) }.orEmpty()
             binding.eventDate.text = date
             binding.eventDate.isVisible = date.isNotBlank()
 
@@ -93,19 +97,39 @@ class EventAdapter(
                 if (event.isTicketed) R.string.event_ticketed else R.string.event_free
             )
 
+            // The badge says today rather than now because SCHEMA.md has no end time. At 07:00 on
+            // the morning of an all day picnic "happening now" would be a lie, while "happening
+            // today" is true from midnight to midnight, which is the precision the data supports.
+            val happeningToday = startsAt != null && isToday(startsAt)
+            binding.eventBadge.isVisible = happeningToday
+
             binding.root.setOnClickListener { onEventClick(event) }
 
             // TalkBack treats a tappable row as one item, so the row carries its own description
-            // rather than leaving the reader to stitch three separate text views together.
+            // rather than leaving the reader to stitch the text views together. The badge goes
+            // first, because on the day it is the part that changes what someone does next.
             val context = binding.root.context
-            binding.root.contentDescription = if (date.isBlank()) {
-                event.title
-            } else {
-                context.getString(R.string.cd_event_row, event.title, date)
+            binding.root.contentDescription = when {
+                happeningToday -> context.getString(
+                    R.string.cd_event_row_today,
+                    context.getString(R.string.event_happening_today),
+                    event.title,
+                    date
+                )
+
+                date.isBlank() -> event.title
+                else -> context.getString(R.string.cd_event_row, event.title, date)
             }
 
             // No image loading library is wired in yet, so the ImageView keeps its placeholder
             // background colour rather than showing a broken image icon. Same as the blog list.
+        }
+
+        // Compared as a calendar date in the phone's own time zone, not as a number of hours, so an
+        // event at 23:00 tonight still counts as today and one at 00:30 tomorrow does not.
+        private fun isToday(startsAt: Date): Boolean {
+            val day = startsAt.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+            return day == LocalDate.now()
         }
     }
 
