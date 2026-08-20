@@ -22,6 +22,17 @@
             android:lineHeight="30sp" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/tickets_button"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="56dp"
+            android:gravity="start|center_vertical"
+            android:textAlignment="viewStart"
+            android:textSize="17sp"
+            android:text="@string/more_tickets" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/blog_button"
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="match_parent"
