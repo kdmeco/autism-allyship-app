@@ -71,7 +71,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.nextEventCard.setOnClickListener {
-            startActivity(EventDetailActivity.newIntent(requireContext(), event.id))
+            startActivity(EventWebViewActivity.newIntent(requireContext(), event.id, event.title))
         }
         binding.nextEventCard.isVisible = true
     }
