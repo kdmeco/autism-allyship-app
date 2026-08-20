@@ -63,4 +63,12 @@
     <string name="cd_close">Close</string>
 
     <string name="cd_back">Back</string>
+
+    <string name="events_loading">Loading events</string>
+    <string name="events_empty">No events to show yet</string>
+    <string name="events_load_failed">Events could not be loaded. Check your connection and try again.</string>
+    <string name="events_upcoming">Upcoming</string>
+    <string name="events_past">Past events</string>
+    <string name="event_ticketed">Tickets required</string>
+    <string name="event_free">Free entry</string>
 </resources>
