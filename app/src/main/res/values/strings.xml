@@ -29,6 +29,10 @@
     <string name="breathing_pace">Pace</string>
     <string name="breathing_pace_slow">Slower</string>
     <string name="breathing_pace_fast">Faster</string>
+
+    <string name="pop_it_bubble_unpopped">Bubble</string>
+    <string name="pop_it_bubble_popped">Popped bubble</string>
+    <string name="pop_it_reset">Reset</string>
     <string name="title_resources">Resources</string>
     <string name="title_more">More</string>
 
