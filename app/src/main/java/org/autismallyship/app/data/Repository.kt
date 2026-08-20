@@ -2,6 +2,7 @@ package org.autismallyship.app.data
 
 import com.google.firebase.Firebase
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.firestore
 import java.time.LocalTime
@@ -231,7 +232,40 @@ object Repository {
             .addOnFailureListener { error -> onError(error) }
     }
 
-    // The only write the app makes. Tickets and donations are created server side and the security
+    // The scanner's one write. A transaction rather than a plain update, so two phones scanning
+    // the same ticket at one door cannot both succeed: whichever transaction commits first wins,
+    // and the SDK retries the other automatically against the now-redeemed document, which is
+    // what turns its result into AlreadyRedeemed rather than a silent double redemption. The
+    // security rules enforce the same thing server side regardless of what this function does,
+    // this is what lets the scanner tell the person at the door which of the two actually
+    // happened.
+    //
+    // Transactions need a live round trip and fail immediately with no network. Offline
+    // persistence does not queue them the way a plain write is queued. RedeemOutcome.Offline is
+    // that specific failure, so ScannerActivity can save the scan and retry it once a connection
+    // comes back rather than just reporting an error.
+    fun redeemTicket(token: String, onResult: (RedeemOutcome) -> Unit) {
+        val ref = db.collection(TICKETS).document(token)
+        db.runTransaction { transaction ->
+            val snapshot = transaction.get(ref)
+            val ticket = snapshot.toObject(Ticket::class.java)
+                ?: return@runTransaction RedeemOutcome.NotFound
+
+            if (ticket.redeemed) return@runTransaction RedeemOutcome.AlreadyRedeemed(ticket)
+
+            val redeemedAt = Timestamp.now()
+            transaction.update(ref, mapOf("redeemed" to true, "redeemedAt" to redeemedAt))
+            RedeemOutcome.Redeemed(ticket.copy(redeemed = true, redeemedAt = redeemedAt))
+        }
+            .addOnSuccessListener { outcome -> onResult(outcome) }
+            .addOnFailureListener { error ->
+                val offline = error is FirebaseFirestoreException &&
+                    error.code == FirebaseFirestoreException.Code.UNAVAILABLE
+                onResult(if (offline) RedeemOutcome.Offline else RedeemOutcome.Error(error))
+            }
+    }
+
+    // The only write the app makes outside the scanner. Tickets and donations are created server side and the security
     // rules refuse both from a client. Fill in createdAt on the Submission before calling this,
     // nothing further along sets it.
     fun sendSubmission(submission: Submission, onSuccess: () -> Unit, onError: (Exception) -> Unit) {
