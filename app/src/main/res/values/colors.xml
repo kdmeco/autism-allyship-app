@@ -20,4 +20,18 @@
     <color name="on_accent">#FFFFFF</color>
     <color name="accent_text">#B8154F</color>
     <color name="accent_text_soft">#8F3552</color>
+
+    <!-- Sensory tool colours. Muted tints of the site's own hue rather than stock Material
+         colours, one hue per tool so they read apart in the hub grid. _fill is a pale wash for
+         a tool's card or background, the plain name is the stronger tone for its icon, the
+         moving element and its heading text. Every _fill/plain pair and every plain-on-page
+         pairing is at or above 4.5:1, computed, not eyeballed; see DECISIONS.md. -->
+    <color name="sensory_breathing">#3A7388</color>
+    <color name="sensory_breathing_fill">#E8F0F3</color>
+    <color name="sensory_pop_it">#88663A</color>
+    <color name="sensory_pop_it_fill">#F3EEE8</color>
+    <color name="sensory_sounds">#8955B6</color>
+    <color name="sensory_sounds_fill">#EEE8F3</color>
+    <color name="sensory_tracing">#347A59</color>
+    <color name="sensory_tracing_fill">#E8F3EE</color>
 </resources>
