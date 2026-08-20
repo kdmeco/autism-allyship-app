@@ -35,7 +35,7 @@ class SensoryFragment : Fragment() {
             startActivity(Intent(requireContext(), PopItActivity::class.java))
         }
         setUpCard(binding.soundsCard, R.string.sensory_sounds_name, R.string.sensory_sounds_desc) {
-            startActivity(PlaceholderActivity.newIntent(requireContext(), R.string.sensory_sounds_name))
+            startActivity(Intent(requireContext(), CalmingSoundsActivity::class.java))
         }
         setUpCard(binding.tracingCard, R.string.sensory_tracing_name, R.string.sensory_tracing_desc) {
             startActivity(Intent(requireContext(), ShapeTracingActivity::class.java))
