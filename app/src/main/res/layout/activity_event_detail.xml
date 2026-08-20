@@ -69,6 +69,16 @@
                     android:textSize="15sp"
                     android:lineSpacingMultiplier="1.4" />
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/register_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:minHeight="48dp"
+                    android:text="@string/event_register"
+                    android:textSize="17sp"
+                    android:visibility="gone" />
+
                 <TextView
                     android:id="@+id/event_description"
                     android:layout_width="match_parent"

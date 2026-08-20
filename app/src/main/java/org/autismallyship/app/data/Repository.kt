@@ -259,7 +259,9 @@ object Repository {
     // flagship event is an all day picnic with no stated finish time, so nobody could fill the field
     // in honestly. Comparing against startsAt would file that picnic under past events one minute
     // after it began, while people were still at it. The website applies the same rule.
-    private fun isUpcoming(event: Event, now: Timestamp): Boolean {
+    // Not private: EventDetailActivity reuses this to decide whether to show the register button,
+    // rather than duplicating the end of day rule a third time.
+    fun isUpcoming(event: Event, now: Timestamp): Boolean {
         val startsAt = event.startsAt ?: return false
         return endOfDay(startsAt) >= now
     }
