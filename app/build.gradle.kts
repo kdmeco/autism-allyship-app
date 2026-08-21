@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.viewpager2)
     implementation(libs.glide)
     implementation(libs.material)
     implementation(libs.zxing.core)

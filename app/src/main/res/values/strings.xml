@@ -56,6 +56,19 @@
 
     <string name="coming_soon">Content coming soon</string>
     <string name="home_next_event_label">Next event</string>
+    <string name="home_greeting_morning">Good morning</string>
+    <string name="home_greeting_afternoon">Good afternoon</string>
+    <string name="home_greeting_evening">Good evening</string>
+    <string name="home_greeting_welcome">Welcome</string>
+    <string name="home_quick_access">Quick access</string>
+    <string name="home_latest_post">Latest from the blog</string>
+    <string name="home_whatsapp">WhatsApp</string>
+    <string name="cd_home_events">Open events</string>
+    <string name="cd_home_sensory">Open sensory tools</string>
+    <string name="cd_home_resources">Open resources</string>
+    <string name="cd_home_donate">Open donate</string>
+    <string name="cd_home_contact">Open contact</string>
+    <string name="cd_whatsapp">Message us on WhatsApp</string>
 
     <string name="more_blog">Blog</string>
     <string name="more_gallery">Gallery</string>
@@ -63,6 +76,7 @@
     <string name="more_donate">Donate</string>
     <string name="more_about">About</string>
     <string name="more_contact">Contact</string>
+    <string name="more_legal">Legal</string>
     <string name="more_settings">Settings</string>
 
     <string name="donate_title">Donate</string>
@@ -104,12 +118,106 @@
     <string name="donate_check_again">Check again</string>
 
     <string name="settings_title">Settings</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_summary">Choose English, Afrikaans or Sesotho. Missing translations fall back to English.</string>
+    <string name="language_english">English</string>
+    <string name="language_afrikaans">Afrikaans</string>
+    <string name="language_sesotho">Sesotho</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_appearance_summary">Follow your phone, or keep the app light or dark.</string>
+    <string name="settings_theme_system">Match phone setting</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
     <string name="settings_dark_mode">Dark mode</string>
     <string name="settings_dark_mode_summary">On means always dark. Off means always light. The default follows your phone setting.</string>
     <string name="settings_sensory_mode">Sensory mode</string>
     <string name="settings_sensory_mode_summary">Calmer colours, no animation and no vibration anywhere in the app.</string>
     <string name="settings_haptics">Vibration</string>
     <string name="settings_haptics_summary">Light vibration for feedback in the sensory tools. Switched off by sensory mode.</string>
+    <string name="settings_notifications">Notification settings</string>
+    <string name="settings_notifications_summary">Push notifications are not part of this version. You can still open this phone\'s notification settings for the app.</string>
+    <string name="settings_font_size">Text size</string>
+    <string name="settings_font_size_summary">This app uses your phone\'s text size. Open display settings to change it.</string>
+    <string name="settings_clear_cache">Clear cached data</string>
+    <string name="settings_cache_cleared">Cached data cleared</string>
+    <string name="settings_legal">Legal</string>
+    <string name="settings_staff_sign_out">Staff sign out</string>
+    <string name="settings_signed_out">Signed out</string>
+    <string name="settings_version">App version %1$s</string>
+
+    <string name="first_run_title">Welcome</string>
+    <string name="first_run_intro">Choose a few preferences. You can change them later in Settings.</string>
+    <string name="first_run_skip">Skip</string>
+    <string name="first_run_continue">Continue</string>
+
+    <string name="site_webview_loading">Loading page</string>
+    <string name="site_webview_load_failed">This page could not be loaded. Check your connection and try again.</string>
+
+    <string name="legal_title">Legal</string>
+    <string name="legal_privacy">Privacy policy</string>
+    <string name="legal_terms">Terms of use</string>
+    <string name="legal_accessibility">Accessibility statement</string>
+    <string name="legal_paia">PAIA manual</string>
+
+    <string name="about_title">About</string>
+    <string name="about_mission_title">Our mission</string>
+    <string name="about_mission_text">To promote the seamless integration of autistic and neurodivergent individuals into community spaces, and to advocate for sensory-friendly environments where everyone belongs.</string>
+    <string name="about_vision_title">Our vision</string>
+    <string name="about_vision_text">A world where every mind belongs, and where autistic and neurodivergent people are valued and included in every space.</string>
+    <string name="about_values_title">Our values</string>
+    <string name="about_values_text">Community, acceptance, advocacy and awareness guide everything we do, from the events we host to the resources we share.</string>
+    <string name="about_team_title">Our team</string>
+    <string name="about_team_member_km_name">Kgomotso Mmalegae Moalusi</string>
+    <string name="about_team_member_km_monogram">KM</string>
+    <string name="about_team_member_tm_name">Tlotleng Peter Monaisa</string>
+    <string name="about_team_member_tm_monogram">TM</string>
+    <string name="about_team_role">Founder and director</string>
+    <string name="about_registration_title">Registration details</string>
+    <string name="about_npo_number">NPO registration number [NPO registration number]</string>
+    <string name="about_contact_title">Contact</string>
+    <string name="about_email">info@autismallyship.org</string>
+    <string name="about_phone">+27 66 385 9936</string>
+    <string name="cd_about_email">Email info@autismallyship.org</string>
+    <string name="cd_about_phone">Call +27 66 385 9936</string>
+
+    <string name="contact_title">Contact</string>
+    <string name="contact_whatsapp">Message us on WhatsApp</string>
+    <string name="contact_category_label">Category</string>
+    <string name="contact_category_general">General</string>
+    <string name="contact_category_volunteer">Volunteer</string>
+    <string name="contact_category_partnership">Partnership</string>
+    <string name="contact_category_media">Media</string>
+    <string name="contact_category_resource_suggestion">Resource suggestion</string>
+    <string name="contact_category_accessibility">Accessibility feedback</string>
+    <string name="contact_name_label">Name</string>
+    <string name="contact_email_label">Email</string>
+    <string name="contact_phone_label">Phone (optional)</string>
+    <string name="contact_message_label">Message</string>
+    <string name="contact_popia_consent">I agree that the foundation may use these details to respond to my message.</string>
+    <string name="contact_submit">Send message</string>
+    <string name="contact_loading">Sending your message</string>
+    <string name="contact_category_required">Choose a category.</string>
+    <string name="contact_name_required">Please enter a name.</string>
+    <string name="contact_email_invalid">Please enter a valid email address.</string>
+    <string name="contact_phone_invalid">Please enter a valid phone number.</string>
+    <string name="contact_message_required">Please enter a message.</string>
+    <string name="contact_popia_required">You must agree before sending.</string>
+    <string name="contact_generic_error">Something went wrong. Check your connection and try again.</string>
+    <string name="contact_success_title">Thank you</string>
+    <string name="contact_success_text">Your message was sent. We will get back to you as soon as we can.</string>
+
+    <string name="gallery_title">Gallery</string>
+    <string name="gallery_loading">Loading gallery</string>
+    <string name="gallery_empty">No albums to show yet</string>
+    <string name="gallery_load_failed">The gallery could not be loaded. Check your connection and try again.</string>
+    <string name="gallery_viewer_title">Photo</string>
+    <string name="cd_gallery_album">%1$s, %2$s</string>
+    <string name="cd_gallery_image">Photo %1$d</string>
+    <string name="cd_gallery_viewer">Gallery photo viewer</string>
+
+    <string name="shop_title">Shop</string>
+    <string name="shop_whatsapp_catalogue">WhatsApp catalogue</string>
+    <string name="cd_shop_catalogue">Open WhatsApp catalogue</string>
 
     <string name="resources_loading">Loading resources</string>
     <string name="resources_empty">No resources to show yet</string>

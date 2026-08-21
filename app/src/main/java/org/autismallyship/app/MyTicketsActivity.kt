@@ -81,6 +81,7 @@ class MyTicketsActivity : AppCompatActivity() {
         // Sensory mode allows no animation anywhere in the app, and a spinner is an animation, so it
         // is replaced with a line of text rather than slowed down.
         val sensoryMode = AppSettings(this).isSensoryMode()
+        binding.offlineBanner.isVisible = false
         binding.loadingSpinner.isVisible = !sensoryMode
         binding.listMessage.setText(R.string.tickets_loading)
         binding.listMessage.isVisible = sensoryMode

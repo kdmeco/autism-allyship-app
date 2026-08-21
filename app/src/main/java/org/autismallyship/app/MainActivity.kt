@@ -59,6 +59,10 @@ class MainActivity : AppCompatActivity() {
         }.commit()
     }
 
+    fun selectTab(menuItemId: Int) {
+        binding.bottomNav.selectedItemId = menuItemId
+    }
+
     private fun showFragment(menuItemId: Int) {
         val tag = when (menuItemId) {
             R.id.nav_events -> EventsFragment.TAG

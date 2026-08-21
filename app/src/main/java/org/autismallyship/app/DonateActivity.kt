@@ -1,10 +1,6 @@
 package org.autismallyship.app
 
-import android.content.ActivityNotFoundException
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -45,16 +41,8 @@ class DonateActivity : AppCompatActivity() {
         binding.submitButton.setOnClickListener { submit() }
     }
 
-    // The legal pages are one of the three things RULES-APP.md allows a WebView for, but the
-    // in-app legal screen that would host them is section 10 work, not built yet. Opening the
-    // website's own page externally, the same way ResourceDetailActivity opens any other outside
-    // link, is the honest stand-in until that screen exists.
     private fun openPrivacyPolicy() {
-        try {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("$SITE_URL/privacy.html")))
-        } catch (error: ActivityNotFoundException) {
-            Toast.makeText(this, R.string.no_app_for_action, Toast.LENGTH_SHORT).show()
-        }
+        startActivity(SiteWebViewActivity.newIntent(this, R.string.legal_privacy, "privacy.html"))
     }
 
     private fun submit() {
@@ -111,7 +99,6 @@ class DonateActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val SITE_URL = "https://autism-allyship.pages.dev"
         private val EMAIL_PATTERN: Pattern = Pattern.compile("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")
     }
 }

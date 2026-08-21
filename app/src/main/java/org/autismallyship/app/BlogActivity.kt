@@ -1,7 +1,5 @@
 package org.autismallyship.app
 
-import android.content.res.Configuration
-import android.net.Uri
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
@@ -18,7 +16,9 @@ class BlogActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBlogBinding
     private val adapter = BlogAdapter { post ->
-        startActivity(BlogArticleActivity.newIntent(this, post.title, articleUrl(post)))
+        startActivity(
+            BlogArticleActivity.newIntent(this, post.title, SiteUrls.blogArticle(this, post.id))
+        )
     }
 
     // The whole published list, kept so the category filter runs over it in memory rather than
@@ -122,27 +122,4 @@ class BlogActivity : AppCompatActivity() {
         binding.listMessage.isVisible = true
     }
 
-    // The article itself is a page on the website, opened in a WebView. app=1 is what tells that
-    // page to drop its own header, footer and share row, since this screen already has a toolbar
-    // and the app has its own settings. Theme and sensory mode go across because the WebView keeps
-    // its own storage and cannot see what was chosen in the app. If the website has not been
-    // updated yet, the extra parameters are ignored and the full page loads, which still reads.
-    private fun articleUrl(post: Post): String {
-        val nightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        val theme = if (nightMode == Configuration.UI_MODE_NIGHT_YES) "dark" else "light"
-        val sensory = if (AppSettings(this).isSensoryMode()) "on" else "off"
-
-        return Uri.parse(SITE_URL).buildUpon()
-            .appendPath("blog-post.html")
-            .appendQueryParameter("id", post.id)
-            .appendQueryParameter("app", "1")
-            .appendQueryParameter("theme", theme)
-            .appendQueryParameter("sensory", sensory)
-            .build()
-            .toString()
-    }
-
-    companion object {
-        private const val SITE_URL = "https://autism-allyship.pages.dev"
-    }
 }

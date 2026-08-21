@@ -10,11 +10,12 @@ class MainApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        AppSettings(this).applyThemePreference()
+        val settings = AppSettings(this)
+        settings.applyThemePreference()
+        settings.applyLanguagePreference()
 
         Firebase.firestore.firestoreSettings = firestoreSettings {
             setLocalCacheSettings(persistentCacheSettings {})
         }
     }
 }
-

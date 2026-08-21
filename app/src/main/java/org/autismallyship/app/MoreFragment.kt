@@ -32,19 +32,22 @@ class MoreFragment : Fragment() {
             startActivity(Intent(requireContext(), BlogActivity::class.java))
         }
         binding.galleryButton.setOnClickListener {
-            startActivity(PlaceholderActivity.newIntent(requireContext(), R.string.more_gallery))
+            startActivity(Intent(requireContext(), GalleryActivity::class.java))
         }
         binding.shopButton.setOnClickListener {
-            startActivity(PlaceholderActivity.newIntent(requireContext(), R.string.more_shop))
+            startActivity(Intent(requireContext(), ShopActivity::class.java))
         }
         binding.donateButton.setOnClickListener {
             startActivity(Intent(requireContext(), DonateActivity::class.java))
         }
         binding.aboutButton.setOnClickListener {
-            startActivity(PlaceholderActivity.newIntent(requireContext(), R.string.more_about))
+            startActivity(Intent(requireContext(), AboutActivity::class.java))
         }
         binding.contactButton.setOnClickListener {
-            startActivity(PlaceholderActivity.newIntent(requireContext(), R.string.more_contact))
+            startActivity(Intent(requireContext(), ContactActivity::class.java))
+        }
+        binding.legalButton.setOnClickListener {
+            startActivity(Intent(requireContext(), LegalActivity::class.java))
         }
         binding.settingsButton.setOnClickListener {
             startActivity(Intent(requireContext(), SettingsActivity::class.java))
