@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/legal_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:navigationContentDescription="@string/cd_back"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:title="@string/legal_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/privacy_button"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="56dp"
+                android:gravity="start|center_vertical"
+                android:textAlignment="viewStart"
+                android:textSize="17sp"
+                android:text="@string/legal_privacy" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/terms_button"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="56dp"
+                android:gravity="start|center_vertical"
+                android:textAlignment="viewStart"
+                android:textSize="17sp"
+                android:text="@string/legal_terms" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/accessibility_button"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="56dp"
+                android:gravity="start|center_vertical"
+                android:textAlignment="viewStart"
+                android:textSize="17sp"
+                android:text="@string/legal_accessibility" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/paia_button"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="56dp"
+                android:gravity="start|center_vertical"
+                android:textAlignment="viewStart"
+                android:textSize="17sp"
+                android:text="@string/legal_paia" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

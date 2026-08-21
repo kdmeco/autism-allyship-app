@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/about_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:navigationContentDescription="@string/cd_back"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:title="@string/about_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/about_mission_title"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="17sp"
+                android:lineHeight="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/about_mission_text"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/about_vision_title"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="17sp"
+                android:lineHeight="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/about_vision_text"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/about_values_title"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="17sp"
+                android:lineHeight="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/about_values_text"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/about_team_title"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="17sp"
+                android:lineHeight="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/about_team_text"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/about_registration_title"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="17sp"
+                android:lineHeight="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/about_npo_number"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/about_contact_title"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="17sp"
+                android:lineHeight="24sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/email_button"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:minHeight="48dp"
+                android:gravity="start|center_vertical"
+                android:textAlignment="viewStart"
+                android:text="@string/about_email"
+                android:contentDescription="@string/cd_about_email" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/phone_button"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:gravity="start|center_vertical"
+                android:textAlignment="viewStart"
+                android:text="@string/about_phone"
+                android:contentDescription="@string/cd_about_phone" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/whatsapp_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:minHeight="48dp"
+                android:text="@string/contact_whatsapp"
+                android:contentDescription="@string/cd_whatsapp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <!-- MediaPlayer.setWakeMode in the calming sounds tool, so a sound carries on playing when
@@ -19,9 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AutismAllyship">
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize">
+            android:theme="@style/Theme.AutismAllyship">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,9 +29,51 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".FirstRunActivity"
+            android:exported="false"
+            android:parentActivityName=".SplashActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:parentActivityName=".SplashActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".SettingsActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".LegalActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SiteWebViewActivity"
+            android:exported="false"
+            android:parentActivityName=".LegalActivity" />
+        <activity
+            android:name=".AboutActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ContactActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ShopActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".GalleryActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".GalleryAlbumActivity"
+            android:exported="false"
+            android:parentActivityName=".GalleryActivity" />
+        <activity
+            android:name=".GalleryViewerActivity"
+            android:exported="false"
+            android:parentActivityName=".GalleryAlbumActivity" />
         <activity
             android:name=".PlaceholderActivity"
             android:exported="false"

@@ -99,6 +99,17 @@
             android:text="@string/more_contact" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/legal_button"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="56dp"
+            android:gravity="start|center_vertical"
+            android:textAlignment="viewStart"
+            android:textSize="17sp"
+            android:text="@string/more_legal" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/settings_button"
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="match_parent"
