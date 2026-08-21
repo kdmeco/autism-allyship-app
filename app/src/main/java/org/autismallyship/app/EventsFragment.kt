@@ -46,9 +46,11 @@ class EventsFragment : Fragment() {
     private fun loadEvents() {
         showLoading()
         Repository.loadUpcomingEvents(
-            onSuccess = { upcoming ->
+            onSuccess = { upcoming, fromCacheUpcoming ->
                 Repository.loadPastEvents(
-                    onSuccess = { past -> showLoaded(upcoming, past) },
+                    onSuccess = { past, fromCachePast ->
+                        showLoaded(upcoming, past, fromCacheUpcoming || fromCachePast)
+                    },
                     onError = { showMessage(R.string.events_load_failed) }
                 )
             },
@@ -56,7 +58,7 @@ class EventsFragment : Fragment() {
         )
     }
 
-    private fun showLoaded(upcoming: List<Event>, past: List<Event>) {
+    private fun showLoaded(upcoming: List<Event>, past: List<Event>, fromCache: Boolean) {
         val binding = this.binding ?: return
 
         if (upcoming.isEmpty() && past.isEmpty()) {
@@ -65,6 +67,7 @@ class EventsFragment : Fragment() {
         }
 
         adapter.showEvents(upcoming, past)
+        binding.offlineBanner.isVisible = fromCache
         binding.loadingSpinner.isVisible = false
         binding.listMessage.isVisible = false
         binding.eventList.isVisible = true
@@ -76,6 +79,7 @@ class EventsFragment : Fragment() {
         // Sensory mode allows no animation anywhere in the app, and a spinner is an animation, so it
         // is replaced with a line of text rather than slowed down.
         val sensoryMode = AppSettings(requireContext()).isSensoryMode()
+        binding.offlineBanner.isVisible = false
         binding.loadingSpinner.isVisible = !sensoryMode
         binding.listMessage.setText(R.string.events_loading)
         binding.listMessage.isVisible = sensoryMode
@@ -84,6 +88,7 @@ class EventsFragment : Fragment() {
 
     private fun showMessage(messageRes: Int) {
         val binding = this.binding ?: return
+        binding.offlineBanner.isVisible = false
         binding.loadingSpinner.isVisible = false
         binding.eventList.isVisible = false
         binding.listMessage.setText(messageRes)

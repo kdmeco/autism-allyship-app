@@ -85,9 +85,18 @@ class HomeFragment : Fragment() {
 
     // Quiet on failure rather than showing an error banner: the Events tab is the real place to
     // see what is wrong, this block is a preview and staying hidden is enough.
+    private var nextEventFromCache = false
+    private var latestPostFromCache = false
+    private var nextEventVisible = false
+    private var latestPostVisible = false
+
     private fun loadNextEvent() {
         Repository.loadNextEvent(
-            onSuccess = { event -> showNextEvent(event) },
+            onSuccess = { event, fromCache ->
+                nextEventFromCache = fromCache
+                showNextEvent(event)
+                refreshOfflineBanner()
+            },
             onError = { }
         )
     }
@@ -96,6 +105,7 @@ class HomeFragment : Fragment() {
         val binding = this.binding ?: return
         if (event == null) {
             binding.nextEventCard.isVisible = false
+            nextEventVisible = false
             return
         }
 
@@ -124,11 +134,16 @@ class HomeFragment : Fragment() {
             startActivity(EventWebViewActivity.newIntent(requireContext(), event.id, event.title))
         }
         binding.nextEventCard.isVisible = true
+        nextEventVisible = true
     }
 
     private fun loadLatestPost() {
         Repository.loadLatestPost(
-            onSuccess = { post -> showLatestPost(post) },
+            onSuccess = { post, fromCache ->
+                latestPostFromCache = fromCache
+                showLatestPost(post)
+                refreshOfflineBanner()
+            },
             onError = { }
         )
     }
@@ -137,6 +152,7 @@ class HomeFragment : Fragment() {
         val binding = this.binding ?: return
         if (post == null) {
             binding.latestPostCard.isVisible = false
+            latestPostVisible = false
             return
         }
 
@@ -172,6 +188,14 @@ class HomeFragment : Fragment() {
             )
         }
         binding.latestPostCard.isVisible = true
+        latestPostVisible = true
+    }
+
+    // Compact banner only when a preview card that is actually on screen came from the disk cache.
+    private fun refreshOfflineBanner() {
+        val binding = this.binding ?: return
+        val show = (nextEventVisible && nextEventFromCache) || (latestPostVisible && latestPostFromCache)
+        binding.offlineBanner.isVisible = show
     }
 
     // Compared as a calendar date in the phone's own time zone, matching EventAdapter's rule for

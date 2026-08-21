@@ -57,7 +57,7 @@ class EventDetailActivity : AppCompatActivity() {
         showLoading()
         Repository.loadEvent(
             eventId,
-            onSuccess = { event ->
+            onSuccess = { event, _ ->
                 if (event == null) {
                     showMessage(R.string.event_not_found)
                 } else {
