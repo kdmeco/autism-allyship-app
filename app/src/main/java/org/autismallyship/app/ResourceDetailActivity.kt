@@ -48,18 +48,18 @@ class ResourceDetailActivity : AppCompatActivity() {
         showLoading()
         Repository.loadResource(
             resourceId,
-            onSuccess = { resource ->
+            onSuccess = { resource, fromCache ->
                 if (resource == null) {
                     showMessage(R.string.resource_not_found)
                 } else {
-                    showResource(resource)
+                    showResource(resource, fromCache)
                 }
             },
             onError = { showMessage(R.string.resource_load_failed) }
         )
     }
 
-    private fun showResource(resource: Resource) {
+    private fun showResource(resource: Resource, fromCache: Boolean) {
         binding.toolbar.title = resource.name
         binding.resourceName.text = resource.name
 
@@ -79,6 +79,7 @@ class ResourceDetailActivity : AppCompatActivity() {
         setUpWebsite(resource.website)
         setUpMap(resource.name)
 
+        binding.offlineBanner.isVisible = fromCache
         binding.loadingSpinner.isVisible = false
         binding.detailMessage.isVisible = false
         binding.detailContent.isVisible = true
@@ -148,6 +149,7 @@ class ResourceDetailActivity : AppCompatActivity() {
         // Sensory mode allows no animation anywhere in the app, and a spinner is an animation, so it
         // is replaced with a line of text rather than slowed down.
         val sensoryMode = AppSettings(this).isSensoryMode()
+        binding.offlineBanner.isVisible = false
         binding.loadingSpinner.isVisible = !sensoryMode
         binding.detailMessage.setText(R.string.resources_loading)
         binding.detailMessage.isVisible = sensoryMode
@@ -155,6 +157,7 @@ class ResourceDetailActivity : AppCompatActivity() {
     }
 
     private fun showMessage(messageRes: Int) {
+        binding.offlineBanner.isVisible = false
         binding.loadingSpinner.isVisible = false
         binding.detailContent.isVisible = false
         binding.detailMessage.setText(messageRes)
