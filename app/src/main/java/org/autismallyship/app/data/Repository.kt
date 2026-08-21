@@ -24,30 +24,44 @@ object Repository {
     // Events are fetched as one published list and split in code. CONSOLE-STEPS.md records that the
     // events collection deliberately has no composite index, and adding an orderBy to these queries
     // is exactly what would need one. The website splits them the same way.
-    fun loadUpcomingEvents(onSuccess: (List<Event>) -> Unit, onError: (Exception) -> Unit) {
+    //
+    // fromCache mirrors loadResources: the offline banner needs Firestore's own word for a disk read.
+    fun loadUpcomingEvents(
+        onSuccess: (events: List<Event>, fromCache: Boolean) -> Unit,
+        onError: (Exception) -> Unit
+    ) {
         val now = Timestamp.now()
         loadPublishedEvents(
-            onSuccess = { events ->
-                onSuccess(events.filter { isUpcoming(it, now) }.sortedBy { it.startsAt })
+            onSuccess = { events, fromCache ->
+                onSuccess(events.filter { isUpcoming(it, now) }.sortedBy { it.startsAt }, fromCache)
             },
             onError = onError
         )
     }
 
-    fun loadPastEvents(onSuccess: (List<Event>) -> Unit, onError: (Exception) -> Unit) {
+    fun loadPastEvents(
+        onSuccess: (events: List<Event>, fromCache: Boolean) -> Unit,
+        onError: (Exception) -> Unit
+    ) {
         val now = Timestamp.now()
         loadPublishedEvents(
-            onSuccess = { events ->
-                onSuccess(events.filter { hasPassed(it, now) }.sortedByDescending { it.startsAt })
+            onSuccess = { events, fromCache ->
+                onSuccess(
+                    events.filter { hasPassed(it, now) }.sortedByDescending { it.startsAt },
+                    fromCache
+                )
             },
             onError = onError
         )
     }
 
     // For the next upcoming event on the home screen.
-    fun loadNextEvent(onSuccess: (Event?) -> Unit, onError: (Exception) -> Unit) {
+    fun loadNextEvent(
+        onSuccess: (event: Event?, fromCache: Boolean) -> Unit,
+        onError: (Exception) -> Unit
+    ) {
         loadUpcomingEvents(
-            onSuccess = { events -> onSuccess(events.firstOrNull()) },
+            onSuccess = { events, fromCache -> onSuccess(events.firstOrNull(), fromCache) },
             onError = onError
         )
     }
@@ -55,9 +69,15 @@ object Repository {
     // Detail screens take an ID rather than the object itself, so they still work after the system
     // has killed and restored the Activity. A draft is refused by the security rules, so an
     // unpublished ID reaches onError rather than returning null.
-    fun loadEvent(eventId: String, onSuccess: (Event?) -> Unit, onError: (Exception) -> Unit) {
+    fun loadEvent(
+        eventId: String,
+        onSuccess: (event: Event?, fromCache: Boolean) -> Unit,
+        onError: (Exception) -> Unit
+    ) {
         db.collection(EVENTS).document(eventId).get()
-            .addOnSuccessListener { document -> onSuccess(document.toObject(Event::class.java)) }
+            .addOnSuccessListener { document ->
+                onSuccess(document.toObject(Event::class.java), document.metadata.isFromCache)
+            }
             .addOnFailureListener { error -> onError(error) }
     }
 
@@ -77,14 +97,20 @@ object Repository {
             .addOnFailureListener { error -> onError(error) }
     }
 
-    fun loadLatestPost(onSuccess: (Post?) -> Unit, onError: (Exception) -> Unit) {
+    fun loadLatestPost(
+        onSuccess: (post: Post?, fromCache: Boolean) -> Unit,
+        onError: (Exception) -> Unit
+    ) {
         db.collection(POSTS)
             .whereEqualTo("published", true)
             .orderBy("publishedAt", Query.Direction.DESCENDING)
             .limit(1)
             .get()
             .addOnSuccessListener { snapshot ->
-                onSuccess(snapshot.toObjects(Post::class.java).firstOrNull())
+                onSuccess(
+                    snapshot.toObjects(Post::class.java).firstOrNull(),
+                    snapshot.metadata.isFromCache
+                )
             }
             .addOnFailureListener { error -> onError(error) }
     }
@@ -114,25 +140,38 @@ object Repository {
 
     fun loadResource(
         resourceId: String,
-        onSuccess: (Resource?) -> Unit,
+        onSuccess: (resource: Resource?, fromCache: Boolean) -> Unit,
         onError: (Exception) -> Unit
     ) {
         db.collection(RESOURCES).document(resourceId).get()
-            .addOnSuccessListener { document -> onSuccess(document.toObject(Resource::class.java)) }
+            .addOnSuccessListener { document ->
+                onSuccess(document.toObject(Resource::class.java), document.metadata.isFromCache)
+            }
             .addOnFailureListener { error -> onError(error) }
     }
 
-    fun loadGalleries(onSuccess: (List<Gallery>) -> Unit, onError: (Exception) -> Unit) {
+    fun loadGalleries(
+        onSuccess: (galleries: List<Gallery>, fromCache: Boolean) -> Unit,
+        onError: (Exception) -> Unit
+    ) {
         db.collection(GALLERIES)
             .orderBy("year", Query.Direction.DESCENDING)
             .get()
-            .addOnSuccessListener { snapshot -> onSuccess(snapshot.toObjects(Gallery::class.java)) }
+            .addOnSuccessListener { snapshot ->
+                onSuccess(snapshot.toObjects(Gallery::class.java), snapshot.metadata.isFromCache)
+            }
             .addOnFailureListener { error -> onError(error) }
     }
 
-    fun loadGallery(galleryId: String, onSuccess: (Gallery?) -> Unit, onError: (Exception) -> Unit) {
+    fun loadGallery(
+        galleryId: String,
+        onSuccess: (gallery: Gallery?, fromCache: Boolean) -> Unit,
+        onError: (Exception) -> Unit
+    ) {
         db.collection(GALLERIES).document(galleryId).get()
-            .addOnSuccessListener { document -> onSuccess(document.toObject(Gallery::class.java)) }
+            .addOnSuccessListener { document ->
+                onSuccess(document.toObject(Gallery::class.java), document.metadata.isFromCache)
+            }
             .addOnFailureListener { error -> onError(error) }
     }
 
@@ -275,13 +314,15 @@ object Repository {
     }
 
     private fun loadPublishedEvents(
-        onSuccess: (List<Event>) -> Unit,
+        onSuccess: (events: List<Event>, fromCache: Boolean) -> Unit,
         onError: (Exception) -> Unit
     ) {
         db.collection(EVENTS)
             .whereEqualTo("published", true)
             .get()
-            .addOnSuccessListener { snapshot -> onSuccess(snapshot.toObjects(Event::class.java)) }
+            .addOnSuccessListener { snapshot ->
+                onSuccess(snapshot.toObjects(Event::class.java), snapshot.metadata.isFromCache)
+            }
             .addOnFailureListener { error -> onError(error) }
     }
 

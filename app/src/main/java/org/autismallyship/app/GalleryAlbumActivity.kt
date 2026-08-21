@@ -58,12 +58,12 @@ class GalleryAlbumActivity : AppCompatActivity() {
         showLoading()
         Repository.loadGallery(
             galleryId,
-            onSuccess = { gallery ->
+            onSuccess = { gallery, fromCache ->
                 if (gallery == null) {
                     showMessage(R.string.gallery_empty)
                 } else {
                     images = gallery.images
-                    showImages(gallery.images)
+                    showImages(gallery.images, fromCache)
                 }
             },
             onError = { showMessage(R.string.gallery_load_failed) }
@@ -72,24 +72,27 @@ class GalleryAlbumActivity : AppCompatActivity() {
 
     private fun showLoading() {
         val sensoryMode = AppSettings(this).isSensoryMode()
+        binding.offlineBanner.isVisible = false
         binding.loadingSpinner.isVisible = !sensoryMode
         binding.listMessage.setText(R.string.gallery_loading)
         binding.listMessage.isVisible = sensoryMode
         binding.imageGrid.isVisible = false
     }
 
-    private fun showImages(images: List<GalleryImage>) {
+    private fun showImages(images: List<GalleryImage>, fromCache: Boolean) {
         adapter.showImages(images)
         binding.loadingSpinner.isVisible = false
         if (images.isEmpty()) {
             showMessage(R.string.gallery_empty)
         } else {
+            binding.offlineBanner.isVisible = fromCache
             binding.listMessage.isVisible = false
             binding.imageGrid.isVisible = true
         }
     }
 
     private fun showMessage(messageRes: Int) {
+        binding.offlineBanner.isVisible = false
         binding.loadingSpinner.isVisible = false
         binding.imageGrid.isVisible = false
         binding.listMessage.setText(messageRes)

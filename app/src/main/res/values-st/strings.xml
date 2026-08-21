@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Sesotho translations land in Section 11. Until then every key falls back to English. -->
+    <!-- Sesotho. Keys are deliberately omitted until a human translator fills them in.
+         An empty <string> would override English with blank text. A missing key falls back
+         to values/strings.xml. Hand translators that English file as the source. -->
 </resources>

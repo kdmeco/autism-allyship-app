@@ -39,31 +39,34 @@ class GalleryActivity : AppCompatActivity() {
     private fun loadGalleries() {
         showLoading()
         Repository.loadGalleries(
-            onSuccess = { albums -> showAlbums(albums) },
+            onSuccess = { albums, fromCache -> showAlbums(albums, fromCache) },
             onError = { showMessage(R.string.gallery_load_failed) }
         )
     }
 
     private fun showLoading() {
         val sensoryMode = AppSettings(this).isSensoryMode()
+        binding.offlineBanner.isVisible = false
         binding.loadingSpinner.isVisible = !sensoryMode
         binding.listMessage.setText(R.string.gallery_loading)
         binding.listMessage.isVisible = sensoryMode
         binding.galleryList.isVisible = false
     }
 
-    private fun showAlbums(albums: List<org.autismallyship.app.data.Gallery>) {
+    private fun showAlbums(albums: List<org.autismallyship.app.data.Gallery>, fromCache: Boolean) {
         adapter.showAlbums(albums)
         binding.loadingSpinner.isVisible = false
         if (albums.isEmpty()) {
             showMessage(R.string.gallery_empty)
         } else {
+            binding.offlineBanner.isVisible = fromCache
             binding.listMessage.isVisible = false
             binding.galleryList.isVisible = true
         }
     }
 
     private fun showMessage(messageRes: Int) {
+        binding.offlineBanner.isVisible = false
         binding.loadingSpinner.isVisible = false
         binding.galleryList.isVisible = false
         binding.listMessage.setText(messageRes)
