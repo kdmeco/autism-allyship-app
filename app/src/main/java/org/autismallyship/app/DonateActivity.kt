@@ -74,11 +74,11 @@ class DonateActivity : AppCompatActivity() {
     }
 
     companion object {
-        // TODO: confirmed banking details go here before this screen ships. See the
-        // matching placeholders in donate.html and shop.html.
-        private const val ACCOUNT_NAME = "[BANK ACCOUNT NAME PENDING CONFIRMATION]"
-        private const val BANK_NAME = "[BANK PENDING CONFIRMATION]"
-        private const val ACCOUNT_NUMBER = "[ACCOUNT NUMBER PENDING CONFIRMATION]"
-        private const val BRANCH_CODE = "[BRANCH CODE PENDING CONFIRMATION]"
+        // Confirmed against the foundation's own banking details, 2 September 2026.
+        // These are duplicated in donate.html and shop.html; change all three together.
+        private const val ACCOUNT_NAME = "Active Autism Neuro-Diversity"
+        private const val BANK_NAME = "FNB Gold Business Account"
+        private const val ACCOUNT_NUMBER = "630 736 70 119"
+        private const val BRANCH_CODE = "210 835"
     }
 }
