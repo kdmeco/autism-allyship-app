@@ -111,14 +111,6 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".DonationCheckoutActivity"
-            android:exported="false"
-            android:parentActivityName=".DonateActivity" />
-        <activity
-            android:name=".DonationResultActivity"
-            android:exported="false"
-            android:parentActivityName=".DonateActivity" />
-        <activity
             android:name=".BreathingActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />

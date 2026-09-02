@@ -124,13 +124,13 @@ class EventDetailActivity : AppCompatActivity() {
         binding.eventCapacity.isVisible = true
     }
 
-    // The register button only ever offers what the Worker will actually accept: free events
-    // (paid tickets are section 7's job against Paystack, see TODO-APP.md), not sold out, and
-    // not already past. Mirrors the same checks registerTicket makes in the api repo, so the
-    // button never invites a booking the server is about to refuse.
+    // The register button only ever offers what the Worker will actually accept: not sold out
+    // and not already past. Mirrors the same checks registerTicket makes in the api repo, so
+    // the button never invites a booking the server is about to refuse. A priced event is
+    // still bookable: the price is collected by EFT or in cash at the event, never here.
     private fun showRegisterButton(event: Event) {
         val isSoldOut = event.capacity > 0 && event.ticketsSold >= event.capacity
-        val canRegister = !event.isTicketed && !isSoldOut && Repository.isUpcoming(event, Timestamp.now())
+        val canRegister = !isSoldOut && Repository.isUpcoming(event, Timestamp.now())
 
         binding.registerButton.isVisible = canRegister
         if (canRegister) {
