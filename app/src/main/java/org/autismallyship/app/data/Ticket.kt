@@ -19,7 +19,6 @@ data class Ticket(
     val attendeeEmail: String = "",
     val quantity: Long = 0,
     val price: Double = 0.0,
-    val paystackRef: String = "",
     val redeemed: Boolean = false,
     val redeemedAt: Timestamp? = null
 )

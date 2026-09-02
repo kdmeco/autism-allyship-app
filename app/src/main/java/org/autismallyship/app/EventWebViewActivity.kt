@@ -21,14 +21,14 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import org.autismallyship.app.databinding.ActivityEventWebviewBinding
 
-// Opens the website event page inside a WebView so free and paid registration
-// share one Paystack-backed flow with the browser. After a successful booking
+// Opens the website event page inside a WebView so registration behaves exactly
+// as it does in the browser. After a successful booking
 // the site navigates to ticket.html?token=…; that URL is intercepted here and
 // handed to TicketDetailActivity, the same screen My Tickets and email links use.
 class EventWebViewActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEventWebviewBinding
-    private var paystackDialog: AlertDialog? = null
+    private var popupDialog: AlertDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         applyAppTheme(AppSettings(this))
@@ -66,15 +66,15 @@ class EventWebViewActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        paystackDialog?.dismiss()
-        paystackDialog = null
+        popupDialog?.dismiss()
+        popupDialog = null
         super.onDestroy()
     }
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun setUpWebView() {
-        // The site and Paystack InlineJS both need JavaScript and DOM storage.
-        // setSupportMultipleWindows is for Paystack's checkout popup; without it
+        // The site needs JavaScript and DOM storage. setSupportMultipleWindows is
+        // for the popups event attachments open with target=_blank; without it
         // the popup never opens inside a WebView.
         val settings = binding.eventWebView.settings
         settings.javaScriptEnabled = true
@@ -121,15 +121,15 @@ class EventWebViewActivity : AppCompatActivity() {
                         request: WebResourceRequest
                     ): Boolean {
                         if (handleNavigation(request.url)) {
-                            paystackDialog?.dismiss()
+                            popupDialog?.dismiss()
                             return true
                         }
                         return false
                     }
                 }
 
-                paystackDialog?.dismiss()
-                paystackDialog = AlertDialog.Builder(this@EventWebViewActivity)
+                popupDialog?.dismiss()
+                popupDialog = AlertDialog.Builder(this@EventWebViewActivity)
                     .setView(popup)
                     .setNegativeButton(R.string.cd_close) { dialog, _ -> dialog.dismiss() }
                     .create()
@@ -142,8 +142,8 @@ class EventWebViewActivity : AppCompatActivity() {
             }
 
             override fun onCloseWindow(window: WebView) {
-                paystackDialog?.dismiss()
-                paystackDialog = null
+                popupDialog?.dismiss()
+                popupDialog = null
             }
         }
     }
