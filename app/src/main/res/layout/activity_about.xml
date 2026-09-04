@@ -194,25 +194,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="@string/about_registration_title"
-                android:textColor="?attr/colorOnSurface"
-                android:textSize="17sp"
-                android:lineHeight="24sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/about_npo_number"
-                android:textColor="?attr/colorOnSurfaceVariant"
-                android:textSize="17sp"
-                android:lineSpacingMultiplier="1.4" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/poppins_semibold"
                 android:text="@string/about_contact_title"
                 android:textColor="?attr/colorOnSurface"
                 android:textSize="17sp"
