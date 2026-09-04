@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             addAllFragments()
-            showFragment(R.id.nav_home)
         } else {
             showFragment(binding.bottomNav.selectedItemId)
         }
@@ -49,13 +48,31 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // All five tabs are added once and kept alive, so switching tab is a hide and
+    // a show rather than a rebuild and each tab keeps its scroll position.
+    //
+    // The four inactive tabs are hidden inside this same transaction rather than
+    // by a showFragment() call after it. commit() only queues the transaction, so
+    // at the moment that call would run, supportFragmentManager.fragments is still
+    // empty: it would hide nothing, and all five tabs would paint on top of each
+    // other. Home is the tab BottomNavigationView selects by default, so it is the
+    // one left showing.
     private fun addAllFragments() {
+        val home = HomeFragment()
+        val events = EventsFragment()
+        val sensory = SensoryFragment()
+        val resources = ResourcesFragment()
+        val more = MoreFragment()
         supportFragmentManager.beginTransaction().apply {
-            add(R.id.fragment_container, HomeFragment(), HomeFragment.TAG)
-            add(R.id.fragment_container, EventsFragment(), EventsFragment.TAG)
-            add(R.id.fragment_container, SensoryFragment(), SensoryFragment.TAG)
-            add(R.id.fragment_container, ResourcesFragment(), ResourcesFragment.TAG)
-            add(R.id.fragment_container, MoreFragment(), MoreFragment.TAG)
+            add(R.id.fragment_container, home, HomeFragment.TAG)
+            add(R.id.fragment_container, events, EventsFragment.TAG)
+            add(R.id.fragment_container, sensory, SensoryFragment.TAG)
+            add(R.id.fragment_container, resources, ResourcesFragment.TAG)
+            add(R.id.fragment_container, more, MoreFragment.TAG)
+            hide(events)
+            hide(sensory)
+            hide(resources)
+            hide(more)
         }.commit()
     }
 
