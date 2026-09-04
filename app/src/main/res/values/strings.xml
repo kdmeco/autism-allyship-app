@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Autism Allyship</string>
+    <string name="app_name" translatable="false">Autism Allyship</string>
 
     <string name="tab_home">Home</string>
     <string name="tab_events">Events</string>
@@ -62,7 +62,7 @@
     <string name="home_greeting_welcome">Welcome</string>
     <string name="home_quick_access">Quick access</string>
     <string name="home_latest_post">Latest from the blog</string>
-    <string name="home_whatsapp">WhatsApp</string>
+    <string name="home_whatsapp" translatable="false">WhatsApp</string>
     <string name="cd_home_events">Open events</string>
     <string name="cd_home_sensory">Open sensory tools</string>
     <string name="cd_home_resources">Open resources</string>
@@ -147,14 +147,14 @@
     <string name="about_values_title">Our values</string>
     <string name="about_values_text">Community, acceptance, advocacy and awareness guide everything we do, from the events we host to the resources we share.</string>
     <string name="about_team_title">Our team</string>
-    <string name="about_team_member_km_name">Kgomotso Mmalegae Moalusi</string>
-    <string name="about_team_member_km_monogram">KM</string>
-    <string name="about_team_member_tm_name">Tlotleng Peter Monaisa</string>
-    <string name="about_team_member_tm_monogram">TM</string>
+    <string name="about_team_member_km_name" translatable="false">Kgomotso Mmalegae Moalusi</string>
+    <string name="about_team_member_km_monogram" translatable="false">KM</string>
+    <string name="about_team_member_tm_name" translatable="false">Tlotleng Peter Monaisa</string>
+    <string name="about_team_member_tm_monogram" translatable="false">TM</string>
     <string name="about_team_role">Founder and director</string>
     <string name="about_contact_title">Contact</string>
-    <string name="about_email">info@autismallyship.org</string>
-    <string name="about_phone">+27 66 385 9936</string>
+    <string name="about_email" translatable="false">info@autismallyship.org</string>
+    <string name="about_phone" translatable="false">+27 66 385 9936</string>
     <string name="cd_about_email">Email info@autismallyship.org</string>
     <string name="cd_about_phone">Call +27 66 385 9936</string>
 
