@@ -251,6 +251,15 @@
     <string name="resources_loading">Disebediswa dia jarwa...</string>
     <string name="resources_filter_category">Sehlopha</string>
     <string name="resources_filter_province">Profinse</string>
+    <string name="resources_choose_category">Kgetha sehlopha ho bona se se nang teng.</string>
+    <string name="resources_group_schools">Dikolo</string>
+    <string name="resources_group_specialists">Dingaka, ba fodisang le tlhahlobo</string>
+    <string name="resources_group_support">Dihlopha tsa thekgo</string>
+    <string name="resources_group_recreation">Boithabiso le phomolo</string>
+    <string name="resources_group_organisations">Mekgatlo le melaolla thuso</string>
+    <string name="resources_group_adults">Ditirelo tsa baholo</string>
+    <string name="resources_group_grants">Dithuso tsa madi le didiriswa</string>
+    <string name="resources_group_other">Tse ding</string>
     <string name="filter_all">Tsohle</string>
     <string name="title_blog">Blog</string>
     <string name="blog_filter_category">Sehlopha</string>
