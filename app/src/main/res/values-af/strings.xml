@@ -241,6 +241,7 @@
     <string name="contact_category_media">Media</string>
     <string name="contact_category_resource_suggestion">Hulpbronvoorstel</string>
     <string name="contact_category_accessibility">Toeganklikheidsterugvoer</string>
+    <string name="contact_category_speaking">Bespreek \'n praatjie of gemeenskapsaktivering</string>
     <string name="contact_name_label">Naam</string>
     <string name="contact_email_label">E-pos</string>
     <string name="contact_message_label">Boodskap</string>

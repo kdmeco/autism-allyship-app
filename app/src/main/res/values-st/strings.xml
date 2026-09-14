@@ -241,6 +241,7 @@
     <string name="contact_category_media">Mecha ya dikgang</string>
     <string name="contact_category_resource_suggestion">Tlhahiso ya sesebediswa</string>
     <string name="contact_category_accessibility">Maikutlo ka phihlello</string>
+    <string name="contact_category_speaking">Rulaganya puo kapa ketsahalo ya setjhaba</string>
     <string name="contact_name_label">Lebitso</string>
     <string name="contact_email_label">Imeile</string>
     <string name="contact_message_label">Molaetsa</string>

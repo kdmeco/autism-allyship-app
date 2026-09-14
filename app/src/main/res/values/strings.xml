@@ -167,6 +167,7 @@
     <string name="contact_category_media">Media</string>
     <string name="contact_category_resource_suggestion">Resource suggestion</string>
     <string name="contact_category_accessibility">Accessibility feedback</string>
+    <string name="contact_category_speaking">Book a talk or community activation</string>
     <string name="contact_name_label">Name</string>
     <string name="contact_email_label">Email</string>
     <string name="contact_phone_label">Phone (optional)</string>
