@@ -69,6 +69,13 @@ class BlogArticleActivity : AppCompatActivity() {
         // on this setting is guarding against.
         binding.articleWebView.settings.javaScriptEnabled = true
         binding.articleWebView.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(
+                view: WebView,
+                request: WebResourceRequest
+            ): Boolean {
+                return SiteLinks.handleLink(this@BlogArticleActivity, request.url)
+            }
+
             override fun onPageFinished(view: WebView, url: String) {
                 showLoaded()
             }

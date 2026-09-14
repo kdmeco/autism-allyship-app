@@ -148,17 +148,20 @@ class EventWebViewActivity : AppCompatActivity() {
         }
     }
 
+    // Ticket interception stays first: a booking hands off to the native ticket
+    // screen. Every other link is decided by SiteLinks, so mail, phone,
+    // WhatsApp and PDF attachments leave the WebView for the phone instead of
+    // replacing the page with the failure screen.
     private fun handleNavigation(uri: Uri): Boolean {
-        if (!isTicketUrl(uri)) {
-            return false
+        if (isTicketUrl(uri)) {
+            val token = uri.getQueryParameter(TOKEN_PARAMETER).orEmpty()
+            if (token.isNotBlank()) {
+                startActivity(TicketDetailActivity.newIntent(this, token))
+                finish()
+                return true
+            }
         }
-        val token = uri.getQueryParameter(TOKEN_PARAMETER).orEmpty()
-        if (token.isBlank()) {
-            return false
-        }
-        startActivity(TicketDetailActivity.newIntent(this, token))
-        finish()
-        return true
+        return SiteLinks.handleLink(this, uri)
     }
 
     private fun isTicketUrl(uri: Uri): Boolean {
