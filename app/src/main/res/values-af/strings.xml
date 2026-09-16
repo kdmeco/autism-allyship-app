@@ -249,14 +249,13 @@
     <string name="gallery_title">Galery</string>
     <string name="shop_title">Winkel</string>
     <string name="resources_loading">Hulpbronne word gelaai...</string>
-    <string name="resources_filter_category">Kategorie</string>
     <string name="resources_filter_province">Provinsie</string>
     <string name="resources_choose_category">Kies \'n kategorie om te sien wat dit bevat.</string>
     <string name="resources_group_schools">Skole</string>
     <string name="resources_group_specialists">Dokters, terapeute en assesserings</string>
     <string name="resources_group_support">Ondersteuningsgroepe</string>
     <string name="resources_group_recreation">Vrytyd en ontspanning</string>
-    <string name="resources_group_organisations">Organisasies en hullyne</string>
+    <string name="resources_group_organisations">Organisasies en hulplyne</string>
     <string name="resources_group_adults">Volwassedienste</string>
     <string name="resources_group_grants">Toelae en toerusting</string>
     <string name="resources_group_other">Ander</string>

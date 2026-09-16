@@ -202,7 +202,6 @@
     <string name="resources_no_matches">No resources match your search</string>
     <string name="resources_load_failed">Resources could not be loaded. Check your connection and try again.</string>
     <string name="resources_search_hint">Search resources</string>
-    <string name="resources_filter_category">Category</string>
     <string name="resources_filter_province">Province</string>
     <string name="resources_choose_category">Choose a category to see what it holds.</string>
     <string name="resources_group_schools">Schools</string>
