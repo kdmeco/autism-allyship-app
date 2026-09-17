@@ -233,6 +233,7 @@ class EventWebViewActivity : AppCompatActivity() {
                 .appendQueryParameter("app", "1")
                 .appendQueryParameter("theme", theme)
                 .appendQueryParameter("sensory", sensory)
+                .appendQueryParameter("lang", AppSettings(context).languageTag())
                 .build()
                 .toString()
         }
