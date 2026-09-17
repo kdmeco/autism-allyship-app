@@ -10,6 +10,7 @@ import org.autismallyship.app.data.Media
 import org.autismallyship.app.databinding.ItemMediaBinding
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 class MediaAdapter(
     private val onOpenLink: (String) -> Unit
@@ -73,14 +74,17 @@ class MediaAdapter(
         }
 
         // The date is stored as YYYY-MM-DD and shown the way the website shows it, for
-        // example 3 Nov 2025. A date that does not parse, because it was typed by hand
+        // example 3 Nov 2025, with English month names in every language, because the
+        // website does not translate them either. A date that does not parse, because it
+        // was typed by hand
         // into the console, is shown exactly as stored rather than guessed at.
         private fun dateText(entry: Media): String {
             if (entry.date.isBlank()) {
                 return ""
             }
             return try {
-                LocalDate.parse(entry.date).format(DateTimeFormatter.ofPattern("d MMM yyyy"))
+                LocalDate.parse(entry.date)
+                    .format(DateTimeFormatter.ofPattern("d MMM yyyy", Locale.UK))
             } catch (_: Exception) {
                 entry.date
             }
@@ -119,7 +123,13 @@ class MediaAdapter(
             if (url.isBlank()) {
                 return null
             }
-            val host = Uri.parse(url).host ?: return null
+            val parsed = Uri.parse(url)
+            // Only https links are offered, matching the website and the admin form, so a
+            // stored address with any other scheme never becomes a tappable row.
+            if (parsed.scheme != "https") {
+                return null
+            }
+            val host = parsed.host ?: return null
             return when {
                 hostMatches(host, "omny.fm") -> context.getString(R.string.gallery_media_listen_omny)
                 hostMatches(host, "youtube.com") || hostMatches(host, "youtu.be") ->
