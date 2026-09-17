@@ -30,6 +30,12 @@ class AboutActivity : AppCompatActivity() {
 
         binding.toolbar.setNavigationOnClickListener { finish() }
 
+        // The registration number is marked translatable false, so the line
+        // is assembled here rather than carrying the number inside a
+        // translatable string.
+        binding.aboutNpcLine.text =
+            getString(R.string.about_npc_line, getString(R.string.about_npc_number))
+
         binding.emailButton.setOnClickListener {
             openUri("mailto:info@autismallyship.org")
         }
