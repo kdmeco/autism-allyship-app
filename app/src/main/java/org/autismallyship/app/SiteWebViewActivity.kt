@@ -70,6 +70,13 @@ class SiteWebViewActivity : AppCompatActivity() {
     private fun setUpWebView() {
         binding.siteWebView.settings.javaScriptEnabled = true
         binding.siteWebView.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(
+                view: WebView,
+                request: WebResourceRequest
+            ): Boolean {
+                return SiteLinks.handleLink(this@SiteWebViewActivity, request.url)
+            }
+
             override fun onPageFinished(view: WebView, url: String) {
                 showLoaded()
             }

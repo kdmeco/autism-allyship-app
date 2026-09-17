@@ -88,6 +88,117 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/poppins_semibold"
+                android:text="@string/about_allyship_title"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="17sp"
+                android:lineHeight="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/about_allyship_text_1"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/about_allyship_text_2"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/about_allyship_text_3"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/about_allyship_text_4"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/about_allyship_text_5"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/about_logo_title"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="17sp"
+                android:lineHeight="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/about_logo_text"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/about_picnic_title"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="17sp"
+                android:lineHeight="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/about_picnic_text_1"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/about_picnic_text_2"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/about_funding_text"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="@string/about_team_title"
                 android:textColor="?attr/colorOnSurface"
                 android:textSize="17sp"
@@ -230,6 +341,15 @@
                 android:minHeight="48dp"
                 android:text="@string/contact_whatsapp"
                 android:contentDescription="@string/cd_whatsapp" />
+
+            <TextView
+                android:id="@+id/about_npc_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="15sp"
+                android:lineSpacingMultiplier="1.4" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
