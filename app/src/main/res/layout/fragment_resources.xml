@@ -51,51 +51,42 @@
             android:textSize="17sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
+    <HorizontalScrollView
+        android:id="@+id/category_scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
-        android:baselineAligned="false"
-        android:orientation="horizontal">
+        android:scrollbars="none">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/category_field"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="0dp"
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/category_chips"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:hint="@string/resources_filter_category"
-            app:hintAnimationEnabled="false">
+            app:selectionRequired="false"
+            app:singleLine="true"
+            app:singleSelection="true" />
+    </HorizontalScrollView>
 
-            <AutoCompleteTextView
-                android:id="@+id/category_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:textSize="17sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/province_field"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/resources_filter_province"
+        app:hintAnimationEnabled="false">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/province_field"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="0dp"
+        <AutoCompleteTextView
+            android:id="@+id/province_input"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:hint="@string/resources_filter_province"
-            app:hintAnimationEnabled="false">
-
-            <AutoCompleteTextView
-                android:id="@+id/province_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:textSize="17sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+            android:inputType="none"
+            android:textSize="17sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
