@@ -158,6 +158,8 @@
     <string name="about_picnic_text_1">The Annual Autism Family Picnic is our flagship event. It gives autistic individuals, their parents and families, friends and communities a day together of fun, interaction and play, with a bit of learning. Activities are designed for both parents and children, so the day caters to their needs. It is also a platform for parents and allies to exchange ideas on how to navigate this colourful world.</string>
     <string name="about_picnic_text_2">The relaxed format is very good for caregivers and allies. They get to engage with others in the same position, and to see their children interacting socially in an environment curated to support their sensory regulation. There is also time to bond and talk in small groups while relaxing, knowing that the needs of their autistic family members are catered for.</string>
     <string name="about_funding_text">We fund our work through the sale of AANDAF merchandise, by hosting an Annual Autism Family Picnic every November (Disability Awareness Month), and by being available for community activations and speaking engagements.</string>
+    <string name="about_npc_line">NPC registration: %1$s</string>
+    <string name="about_npc_number" translatable="false">2023/657319/08</string>
     <string name="about_team_title">Our team</string>
     <string name="about_team_member_km_name" translatable="false">Kgomotso Mmalegae Moalusi</string>
     <string name="about_team_member_km_monogram" translatable="false">KM</string>

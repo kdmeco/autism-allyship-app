@@ -341,6 +341,15 @@
                 android:minHeight="48dp"
                 android:text="@string/contact_whatsapp"
                 android:contentDescription="@string/cd_whatsapp" />
+
+            <TextView
+                android:id="@+id/about_npc_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="15sp"
+                android:lineSpacingMultiplier="1.4" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

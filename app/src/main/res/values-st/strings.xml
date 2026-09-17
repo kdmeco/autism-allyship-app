@@ -241,6 +241,7 @@
     <string name="about_picnic_text_1">Pikiniking ya Selemo le Selemo ya Malapa a “Autism” ke ketsahalo ya rona e kgolo. E neha batho ba nang le “autism”, batsadi le malapa a bona, metswalle le mekgatlo letsatsi la ho thabela, ho phedisana le ho bapala, le ho ithuta hanyane. Ditshebetso di hlophisitswe bakeng sa batsadi le bana ka bobona, kahoo letsatsi le arabela ditlhokwa tsa bona. E boetse e le sebaka sa batsadi le batho ba re thusang ho nwa maikutlo ka hore na ba ka tsamaisa lefatshe le mebala ena joang.</string>
     <string name="about_picnic_text_2">Sebopeho se phomotseng se molemo haholo bakeng sa batho ba hlokomelang le batho ba re thusang. Ba kgona ho bua le ba bang ba leng boemong bo tšoanang, le ho bona bana ba bona ba phedisana sebakeng se hlophisitsweng ho thekga taolo ya maikutlo a bona a mehamo. Ho boetse ho na le nako ya ho kopana le ho bua dihlophong tse nyane ha ba phomola, ba tseba hore ditlhokwa tsa malapa a bona a batho ba nang le “autism” di hlokometswe.</string>
     <string name="about_funding_text">Re lefella mosebetsi wa rona ka thekiso ya diapara tsa AANDAF, ka ho hlophisa Pikiniking ya Selemo le Selemo ya Malapa a “Autism” ka Pudungwana selemo se seng le se seng (Kgwedi ya Tsebo ya Bokooa), le ka ho ba teng bakeng sa diketsahalo tsa setjhaba le dipuo.</string>
+    <string name="about_npc_line">Ngodiso ya NPC: %1$s</string>
     <string name="about_team_title">Sehlopha sa rona</string>
     <string name="about_team_role">Mothehi le motsamaisi</string>
     <string name="about_contact_title">Ikopanye</string>
