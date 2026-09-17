@@ -109,6 +109,11 @@
     <string name="gallery_loading">E kenya galeri</string>
     <string name="gallery_empty">Ha ho dialbamo tse ka bontshwang hajwale</string>
     <string name="gallery_load_failed">Galeri e ke ke ya kenngwa. Sheba kgokahano ya hao mme o leke hape.</string>
+    <string name="gallery_tab_photos">Dinepe</string>
+    <string name="gallery_tab_media">Dipuisano le mecha ya dikgang</string>
+    <string name="gallery_media_loading">E kenya media</string>
+    <string name="gallery_media_empty">Ha ho mekgahlo ya media ea ka bontshwa hajwale</string>
+    <string name="gallery_media_load_failed">Mekgahlo ya media e ke ke ya kenngwa. Sheba kgokahano ya hao mme o leke hape.</string>
     <string name="gallery_media_undated">Ntle le letsatsi</string>
     <string name="gallery_media_with">Le %1$s</string>
     <string name="gallery_media_type_television">Thelevishene</string>

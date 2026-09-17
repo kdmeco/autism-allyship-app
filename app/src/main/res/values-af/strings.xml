@@ -109,6 +109,11 @@
     <string name="gallery_loading">Laai galery</string>
     <string name="gallery_empty">Nog geen albums om te wys nie</string>
     <string name="gallery_load_failed">Die galery kon nie gelaai word nie. Kyk na jou verbinding en probeer weer.</string>
+    <string name="gallery_tab_photos">Foto\'s</string>
+    <string name="gallery_tab_media">Onderhoude en media</string>
+    <string name="gallery_media_loading">Laai media</string>
+    <string name="gallery_media_empty">Nog geen media-inskrywings om te wys nie</string>
+    <string name="gallery_media_load_failed">Die medialys kon nie gelaai word nie. Kyk na jou verbinding en probeer weer.</string>
     <string name="gallery_media_undated">Sonder datum</string>
     <string name="gallery_media_with">Met %1$s</string>
     <string name="gallery_media_type_television">Televisie</string>

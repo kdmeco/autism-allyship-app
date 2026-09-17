@@ -203,6 +203,11 @@
     <string name="gallery_loading">Loading gallery</string>
     <string name="gallery_empty">No albums to show yet</string>
     <string name="gallery_load_failed">The gallery could not be loaded. Check your connection and try again.</string>
+    <string name="gallery_tab_photos">Photos</string>
+    <string name="gallery_tab_media">Interviews and media</string>
+    <string name="gallery_media_loading">Loading media</string>
+    <string name="gallery_media_empty">No media entries to show yet</string>
+    <string name="gallery_media_load_failed">The media list could not be loaded. Check your connection and try again.</string>
     <string name="gallery_media_undated">Undated</string>
     <string name="gallery_media_with">With %1$s</string>
     <string name="gallery_media_type_television">Television</string>
