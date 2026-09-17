@@ -61,6 +61,13 @@ class ShopActivity : AppCompatActivity() {
     private fun setUpWebView() {
         binding.shopWebView.settings.javaScriptEnabled = true
         binding.shopWebView.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(
+                view: WebView,
+                request: WebResourceRequest
+            ): Boolean {
+                return SiteLinks.handleLink(this@ShopActivity, request.url)
+            }
+
             override fun onPageFinished(view: WebView, url: String) {
                 showLoaded()
             }

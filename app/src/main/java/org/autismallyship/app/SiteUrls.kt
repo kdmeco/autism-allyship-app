@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.res.Configuration
 import android.net.Uri
 
-// Builds website page URLs for in-app WebViews. app=1 drops the site chrome; theme and sensory
+// Builds website page URLs for in-app WebViews. app=1 drops the site chrome; theme, sensory and lang
 // are passed because the WebView cannot read the app's SharedPreferences.
 object SiteUrls {
 
@@ -25,6 +25,7 @@ object SiteUrls {
             .appendQueryParameter("app", "1")
             .appendQueryParameter("theme", theme)
             .appendQueryParameter("sensory", sensory)
+            .appendQueryParameter("lang", AppSettings(context).languageTag())
             .build()
             .toString()
     }
@@ -40,6 +41,7 @@ object SiteUrls {
             .appendQueryParameter("app", "1")
             .appendQueryParameter("theme", theme)
             .appendQueryParameter("sensory", sensory)
+            .appendQueryParameter("lang", AppSettings(context).languageTag())
             .build()
             .toString()
     }

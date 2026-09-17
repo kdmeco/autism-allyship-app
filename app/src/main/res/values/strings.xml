@@ -146,6 +146,20 @@
     <string name="about_vision_text">A world where every mind belongs, and where autistic and neurodivergent people are valued and included in every space.</string>
     <string name="about_values_title">Our values</string>
     <string name="about_values_text">Community, acceptance, advocacy and awareness guide everything we do, from the events we host to the resources we share.</string>
+    <string name="about_allyship_title">Why allyship</string>
+    <string name="about_allyship_text_1">Our focus is to broaden a network of allies: people who are not autistic themselves, or who have no real direct experience, but who still want to support autistic people and make environments inclusive.</string>
+    <string name="about_allyship_text_2">The need to expand across sectors came from our founder\'s passion and belief that autistic advocates and allies are needed in every space, because autistic people have a right to enjoy a quality of experience beyond health and educational facilities.</string>
+    <string name="about_allyship_text_3">The role of the Active Autism &amp; Neuro-Diversity Allyship Foundation (AANDAF), known as the Autism Allyship Foundation NPC, is to ensure that the world is adequately equipped to accommodate and include children, adults and families affected by autism and neurodiversity. We aim to create a network of allies who, although not necessarily affected by autism or neurodiversity, are committed and empowered to create safe spaces, to help educate others, and to expand holistic inclusion and accommodations.</string>
+    <string name="about_allyship_text_4">Our work is not only teaching about autism and neurodiversity and sharing the experiences of individuals in the autism community. We also present practical steps and strategies for making social spaces more inclusive, beyond just schools and healthcare facilities. We want to disrupt the way autistic people and those with invisible disabilities are supported, towards a fairer, non-ableist approach.</string>
+    <string name="about_allyship_text_5">With every interaction and collaboration with institutions, we aim to guide participants to identify solutions within their own spaces.</string>
+    <string name="about_logo_title">Our logo</string>
+    <string name="about_logo_text">Every autistic person is different, just like every fingerprint and every brain. The many colours represent the different hemispheres of the brain.</string>
+    <string name="about_picnic_title">Annual Autism Family Picnic</string>
+    <string name="about_picnic_text_1">The Annual Autism Family Picnic is our flagship event. It gives autistic individuals, their parents and families, friends and communities a day together of fun, interaction and play, with a bit of learning. Activities are designed for both parents and children, so the day caters to their needs. It is also a platform for parents and allies to exchange ideas on how to navigate this colourful world.</string>
+    <string name="about_picnic_text_2">The relaxed format is very good for caregivers and allies. They get to engage with others in the same position, and to see their children interacting socially in an environment curated to support their sensory regulation. There is also time to bond and talk in small groups while relaxing, knowing that the needs of their autistic family members are catered for.</string>
+    <string name="about_funding_text">We fund our work through the sale of AANDAF merchandise, by hosting an Annual Autism Family Picnic every November (Disability Awareness Month), and by being available for community activations and speaking engagements.</string>
+    <string name="about_npc_line">NPC registration: %1$s</string>
+    <string name="about_npc_number" translatable="false">2023/657319/08</string>
     <string name="about_team_title">Our team</string>
     <string name="about_team_member_km_name" translatable="false">Kgomotso Mmalegae Moalusi</string>
     <string name="about_team_member_km_monogram" translatable="false">KM</string>
@@ -167,6 +181,7 @@
     <string name="contact_category_media">Media</string>
     <string name="contact_category_resource_suggestion">Resource suggestion</string>
     <string name="contact_category_accessibility">Accessibility feedback</string>
+    <string name="contact_category_speaking">Book a talk or community activation</string>
     <string name="contact_name_label">Name</string>
     <string name="contact_email_label">Email</string>
     <string name="contact_phone_label">Phone (optional)</string>
@@ -202,8 +217,16 @@
     <string name="resources_no_matches">No resources match your search</string>
     <string name="resources_load_failed">Resources could not be loaded. Check your connection and try again.</string>
     <string name="resources_search_hint">Search resources</string>
-    <string name="resources_filter_category">Category</string>
     <string name="resources_filter_province">Province</string>
+    <string name="resources_choose_category">Choose a category to see what it holds.</string>
+    <string name="resources_group_schools">Schools</string>
+    <string name="resources_group_specialists">Doctors, therapists and assessments</string>
+    <string name="resources_group_support">Support groups</string>
+    <string name="resources_group_recreation">Leisure and recreation</string>
+    <string name="resources_group_organisations">Organisations and helplines</string>
+    <string name="resources_group_adults">Adult services</string>
+    <string name="resources_group_grants">Grants and equipment</string>
+    <string name="resources_group_other">Other</string>
     <string name="filter_all">All</string>
     <string name="offline_banner">You are offline. This list was saved earlier and may be out of date.</string>
 

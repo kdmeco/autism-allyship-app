@@ -5,6 +5,7 @@ import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.firestore
+import org.autismallyship.app.isPlausibleTicketToken
 import java.time.LocalTime
 import java.time.ZoneId
 import java.util.Date
@@ -188,6 +189,12 @@ object Repository {
         onSuccess: (ticket: Ticket?, fromCache: Boolean) -> Unit,
         onError: (Exception) -> Unit
     ) {
+        // document() throws on a malformed token before any listener runs, so the same
+        // shape check the screens make is repeated here: no future caller can crash on it.
+        if (!isPlausibleTicketToken(token)) {
+            onSuccess(null, false)
+            return
+        }
         db.collection(TICKETS).document(token).get()
             .addOnSuccessListener { document ->
                 onSuccess(document.toObject(Ticket::class.java), document.metadata.isFromCache)
@@ -284,6 +291,11 @@ object Repository {
     // that specific failure, so ScannerActivity can save the scan and retry it once a connection
     // comes back rather than just reporting an error.
     fun redeemTicket(token: String, onResult: (RedeemOutcome) -> Unit) {
+        // Same guard as loadTicketByToken: the transaction would throw before it began.
+        if (!isPlausibleTicketToken(token)) {
+            onResult(RedeemOutcome.NotFound)
+            return
+        }
         val ref = db.collection(TICKETS).document(token)
         db.runTransaction { transaction ->
             val snapshot = transaction.get(ref)

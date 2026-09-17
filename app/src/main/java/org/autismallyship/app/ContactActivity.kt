@@ -39,6 +39,10 @@ class ContactActivity : AppCompatActivity() {
             CategoryOption(
                 getString(R.string.contact_category_accessibility),
                 "accessibility"
+            ),
+            CategoryOption(
+                getString(R.string.contact_category_speaking),
+                "speaking engagement"
             )
         )
     }
