@@ -176,6 +176,32 @@ object Repository {
             .addOnFailureListener { error -> onError(error) }
     }
 
+    // The media list deliberately has no composite index, the same choice CONSOLE-STEPS.md
+    // records for events: the sort happens here instead. An empty date string sorts below
+    // every real date, so sorting descending puts dated entries newest first and the
+    // undated ones last with no second pass. An entry with no outlet cannot be shown, so
+    // it is dropped rather than rendered empty.
+    //
+    // fromCache mirrors loadResources: the offline banner needs Firestore's own word for
+    // "this answer came off the disk, not the server".
+    fun loadMedia(
+        onSuccess: (media: List<Media>, fromCache: Boolean) -> Unit,
+        onError: (Exception) -> Unit
+    ) {
+        db.collection(MEDIA)
+            .whereEqualTo("published", true)
+            .get()
+            .addOnSuccessListener { snapshot ->
+                onSuccess(
+                    snapshot.toObjects(Media::class.java)
+                        .filter { it.outlet.isNotBlank() }
+                        .sortedByDescending { it.date },
+                    snapshot.metadata.isFromCache
+                )
+            }
+            .addOnFailureListener { error -> onError(error) }
+    }
+
     // Tickets are looked up by document ID, which is the token itself. SCHEMA.md settled this on
     // 20 Aug: the security rules allow get on a known ID but never list on the collection, so a
     // query on the token field would be refused for anyone who is not an admin. onSuccess with
@@ -381,6 +407,7 @@ object Repository {
     private const val POSTS = "posts"
     private const val RESOURCES = "resources"
     private const val GALLERIES = "galleries"
+    private const val MEDIA = "media"
     private const val TICKETS = "tickets"
     private const val STAFF = "staff"
     private const val SUBMISSIONS = "submissions"
