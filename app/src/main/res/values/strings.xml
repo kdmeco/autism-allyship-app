@@ -71,7 +71,7 @@
     <string name="cd_whatsapp">Message us on WhatsApp</string>
 
     <string name="more_blog">Blog</string>
-    <string name="more_gallery">Gallery</string>
+    <string name="more_gallery">Media Gallery</string>
     <string name="more_shop">Shop</string>
     <string name="more_donate">Donate</string>
     <string name="more_about">About</string>
@@ -199,7 +199,7 @@
     <string name="contact_success_title">Thank you</string>
     <string name="contact_success_text">Your message was sent. We will get back to you as soon as we can.</string>
 
-    <string name="gallery_title">Gallery</string>
+    <string name="gallery_title">Media Gallery</string>
     <string name="gallery_loading">Loading gallery</string>
     <string name="gallery_empty">No albums to show yet</string>
     <string name="gallery_load_failed">The gallery could not be loaded. Check your connection and try again.</string>

@@ -199,7 +199,7 @@
     <string name="home_next_event_label">Ketsahalo e latelang</string>
     <string name="cd_whatsapp">Re romelle molaetsa ho WhatsApp</string>
     <string name="more_blog">Blog</string>
-    <string name="more_gallery">Pontsho ya dinepe</string>
+    <string name="more_gallery">Pontsho ya media</string>
     <string name="more_shop">Lebenkele</string>
     <string name="more_donate">Nehela</string>
     <string name="more_about">Ka rona</string>
@@ -260,7 +260,7 @@
     <string name="contact_message_label">Molaetsa</string>
     <string name="contact_submit">Romella molaetsa</string>
     <string name="contact_category_required">Kgetha sehlopha</string>
-    <string name="gallery_title">Pontsho ya dinepe</string>
+    <string name="gallery_title">Pontsho ya media</string>
     <string name="shop_title">Lebenkele</string>
     <string name="resources_loading">Disebediswa dia jarwa...</string>
     <string name="resources_filter_province">Profinse</string>

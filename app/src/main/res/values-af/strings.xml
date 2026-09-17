@@ -199,7 +199,7 @@
     <string name="home_next_event_label">Volgende geleentheid</string>
     <string name="cd_whatsapp">Stuur vir ons \'n boodskap op WhatsApp</string>
     <string name="more_blog">Blog</string>
-    <string name="more_gallery">Galery</string>
+    <string name="more_gallery">Mediagalery</string>
     <string name="more_shop">Winkel</string>
     <string name="more_donate">Skenk</string>
     <string name="more_about">Oor ons</string>
@@ -260,7 +260,7 @@
     <string name="contact_message_label">Boodskap</string>
     <string name="contact_submit">Stuur boodskap</string>
     <string name="contact_category_required">Kies \'n kategorie</string>
-    <string name="gallery_title">Galery</string>
+    <string name="gallery_title">Mediagalery</string>
     <string name="shop_title">Winkel</string>
     <string name="resources_loading">Hulpbronne word gelaai...</string>
     <string name="resources_filter_province">Provinsie</string>
