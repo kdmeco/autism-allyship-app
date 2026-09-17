@@ -69,7 +69,7 @@ class TicketDetailActivity : AppCompatActivity() {
     }
 
     private fun loadTicket(token: String) {
-        if (token.isBlank()) {
+        if (!isPlausibleTicketToken(token)) {
             showMessage(R.string.ticket_not_found)
             return
         }

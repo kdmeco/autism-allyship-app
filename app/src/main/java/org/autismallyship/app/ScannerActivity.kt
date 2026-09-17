@@ -92,7 +92,7 @@ class ScannerActivity : AppCompatActivity() {
         val token = rawValue?.let { value ->
             runCatching { Uri.parse(value).getQueryParameter(TOKEN_PARAMETER) }.getOrNull() ?: value
         }
-        if (token.isNullOrBlank()) {
+        if (token == null || !isPlausibleTicketToken(token)) {
             showResultError(getString(R.string.scanner_result_not_valid))
             return
         }

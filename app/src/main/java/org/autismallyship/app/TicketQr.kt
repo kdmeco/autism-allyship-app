@@ -32,4 +32,12 @@ fun ticketQrBitmap(content: String, sizePx: Int): Bitmap {
     return Bitmap.createBitmap(pixels, matrix.width, matrix.height, Bitmap.Config.ARGB_8888)
 }
 
+// Firestore's document() throws for a value containing "/" and accepts anything
+// else without question, so the shape is checked before a token reaches the
+// database. The Worker's tokens are 20 random bytes in base64url, about 27
+// characters, and the range is generous around that in case the length moves.
+private val ticketTokenPattern = Regex("^[A-Za-z0-9_-]{16,64}$")
+
+fun isPlausibleTicketToken(token: String): Boolean = ticketTokenPattern.matches(token)
+
 private const val QUIET_ZONE_MODULES = 4
